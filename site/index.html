@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gazeta da Mooca — Protótipo do site</title>
+<link rel="icon" href="../assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#0085BD; --azul-esc:#043E79; --ciano:#32EDFF; --tinta:#161616;
+  --cinza:#5E6A70; --fundo:#F4F7F9; --linha:#DCE4E9; --branco:#fff;
+  --tit:'Open Sans',system-ui,sans-serif; --txt:'Roboto',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--txt);color:var(--tinta);background:var(--fundo);font-size:16px;line-height:1.55}
+a{color:var(--azul);text-decoration:none}
+h1,h2,h3,h4{font-family:var(--tit);line-height:1.15}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+img{max-width:100%}
+.demo-tarja{background:var(--tinta);color:#fff;font-size:12px;text-align:center;padding:6px 10px}
+.demo-tarja b{color:var(--ciano)}
+
+/* header */
+header.topo{background:var(--branco);border-bottom:1px solid var(--linha)}
+.topo-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+.logo img{height:34px;width:auto;display:block}
+.topo-dir{font-size:12.5px;color:var(--cinza);text-align:right}
+.topo-dir b{color:var(--azul-esc)}
+nav.menu{background:var(--azul-esc)}
+.menu-in{display:flex;flex-wrap:wrap}
+.menu a{color:rgba(255,255,255,.92);font-family:var(--tit);font-weight:600;font-size:13.5px;padding:11px 14px;display:block}
+.menu a.on{background:var(--azul);color:#fff}
+.menu a.cta{margin-left:auto;background:var(--ciano);color:var(--azul-esc)}
+.sub-faixa{background:var(--azul);color:#fff;font-size:12.5px;padding:6px 0}
+.sub-faixa .wrap{display:flex;gap:18px;flex-wrap:wrap}
+
+/* cards / layout */
+main{padding:26px 0 50px}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:24px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--branco);border:1px solid var(--linha);border-radius:6px;overflow:hidden}
+.foto{background:linear-gradient(135deg,#9FB6C4,#5D7A8C 55%,#38566B);position:relative;display:block}
+.foto::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 4px,transparent 4px 8px)}
+.foto i{position:absolute;left:10px;bottom:8px;font-style:normal;font-family:var(--tit);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--azul);color:#fff;padding:3px 8px}
+.chapeu{font-family:var(--tit);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--azul)}
+.manchete h2{font-size:clamp(22px,3.4vw,32px);font-weight:800;margin:6px 0 8px}
+.manchete p{color:#444;font-size:16.5px}
+.assina{font-size:12px;color:var(--cinza);margin-top:8px;padding-top:8px;border-top:1px solid var(--linha)}
+.sec-tit{display:flex;align-items:center;gap:12px;margin:30px 0 14px}
+.sec-tit h3{font-size:17px;font-weight:800;text-transform:uppercase;color:var(--azul-esc)}
+.sec-tit::after{content:"";flex:1;height:3px;background:linear-gradient(90deg,var(--azul),transparent)}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.tres{grid-template-columns:1fr}}
+.mini h4{font-size:15.5px;font-weight:700;margin:9px 10px 4px}
+.mini p{font-size:13px;color:var(--cinza);margin:0 10px 12px}
+.lista-n{list-style:none}
+.lista-n li{border-bottom:1px solid var(--linha)}
+.lista-n a{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:13px;color:var(--tinta);align-items:center}
+.lista-n a:hover h4{color:var(--azul)}
+.lista-n h4{font-size:16px}
+.lista-n .m{font-size:12px;color:var(--cinza);margin-top:4px}
+
+/* sidebar */
+.lat>*+*{margin-top:18px}
+.anuncio{border:1px dashed #9CC3D8;background:#EDF7FC;padding:16px;text-align:center;border-radius:6px}
+.anuncio .rot{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#5B87A0;margin-bottom:8px}
+.anuncio .nm{font-family:var(--tit);font-weight:800;font-size:18px;color:var(--azul-esc)}
+.anuncio .ds{font-size:13px;color:var(--cinza);margin-top:4px}
+.bt{display:inline-block;background:var(--azul);color:#fff;font-family:var(--tit);font-weight:700;font-size:13px;padding:9px 16px;border:0;border-radius:4px;cursor:pointer}
+.bt:hover{background:var(--azul-esc)}
+.bt.zap{background:#1FA855}
+.bt.ghost{background:transparent;color:var(--azul);border:1px solid var(--azul)}
+.box h5{font-family:var(--tit);font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--azul-esc);padding:11px 13px;border-bottom:2px solid var(--azul)}
+.box ul{list-style:none}
+.box li{display:flex;gap:10px;padding:9px 13px;border-bottom:1px dotted var(--linha);font-size:13.5px;align-items:flex-start}
+.box li:last-child{border:0}
+.dt{font-family:var(--tit);font-size:10.5px;font-weight:700;color:var(--azul);background:#E4F2F9;padding:3px 6px;white-space:nowrap}
+.nl{background:var(--azul-esc);color:#fff;padding:16px;border-radius:6px}
+.nl h5{font-family:var(--tit);font-size:15px;color:var(--ciano);margin-bottom:5px}
+.nl p{font-size:12.5px;color:rgba(255,255,255,.8);margin-bottom:10px}
+.nl input{width:100%;padding:9px;border:0;border-radius:4px;font-size:13px;margin-bottom:8px}
+.nl .bt{width:100%;background:var(--ciano);color:var(--azul-esc)}
+
+/* guia */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{font-family:var(--tit);font-size:12.5px;font-weight:600;padding:7px 13px;border:1px solid var(--linha);background:#fff;border-radius:20px;cursor:pointer}
+.chip.on{background:var(--azul-esc);color:#fff;border-color:var(--azul-esc)}
+.busca{display:flex;gap:8px;margin-top:14px}
+.busca input{flex:1;padding:11px 14px;border:1px solid var(--linha);border-radius:4px;font-size:14.5px}
+.gcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:16px}
+.gcard{background:#fff;border:1px solid var(--linha);border-radius:6px;padding:14px}
+.gcard .cat{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza)}
+.gcard h4{font-size:15.5px;margin:5px 0 3px}
+.gcard p{font-size:12.5px;color:var(--cinza)}
+.selo{display:inline-block;font-family:var(--tit);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-top:9px}
+.s-vf{background:#DFF1E6;color:#1F6B3C}.s-ds{background:#FFF3D6;color:#8A6512}.s-gr{background:#EEF1F3;color:var(--cinza)}
+.gcard .bt{margin-top:10px;font-size:12px;padding:7px 12px}
+.gdest{background:#EDF7FC;border:1px solid #9CC3D8;border-radius:6px;padding:16px;display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;margin-top:16px}
+.gdest .lg{width:64px;height:64px;background:linear-gradient(135deg,var(--azul-esc),var(--azul));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--tit);font-weight:800;font-size:22px;border-radius:6px}
+
+/* classificados */
+.abas{display:flex;border-bottom:2px solid var(--azul-esc);margin-top:16px}
+.aba{font-family:var(--tit);font-weight:700;font-size:14px;padding:10px 18px;cursor:pointer;color:var(--cinza)}
+.aba.on{background:var(--azul-esc);color:#fff}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;padding:13px 0}
+.filtros select{padding:8px 10px;border:1px solid var(--linha);border-radius:4px;font-size:13px;background:#fff}
+.cl-item{background:#fff;border:1px solid var(--linha);border-radius:6px;display:grid;grid-template-columns:130px 1fr auto;gap:16px;padding:12px;align-items:center;margin-bottom:12px}
+@media(max-width:640px){.cl-item{grid-template-columns:1fr}.cl-preco{text-align:left!important}}
+.cl-item .foto{height:88px;border-radius:4px}
+.cl-item h4{font-size:16px}
+.cl-attr{font-size:12px;color:var(--cinza);letter-spacing:.03em;margin:4px 0 6px}
+.cl-vend{font-size:12.5px;color:var(--cinza)}
+.cl-vend b{color:var(--azul-esc)}
+.cl-preco{font-family:var(--tit);font-weight:800;font-size:20px;color:var(--azul-esc);text-align:right}
+.cl-preco small{display:block;font-size:11px;color:var(--cinza);font-weight:400}
+
+/* noticia */
+.art{background:#fff;border:1px solid var(--linha);border-radius:6px;padding:clamp(18px,4vw,38px)}
+.art h1{font-size:clamp(24px,4vw,36px);font-weight:800;margin:8px 0 10px}
+.art .lf{font-size:18px;color:#444;margin-bottom:14px}
+.art .corpo p{margin:0 0 16px;font-size:17px;max-width:70ch}
+.art .meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--cinza);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);padding:10px 0;margin-bottom:18px}
+.compart{display:flex;gap:8px;margin-top:18px}
+.tag-ia{background:#F4F9FC;border-left:3px solid var(--azul);padding:10px 14px;font-size:12.5px;color:var(--cinza);margin-top:22px}
+
+/* agenda / edicoes */
+.ev{background:#fff;border:1px solid var(--linha);border-radius:6px;display:flex;gap:16px;padding:14px;margin-bottom:10px;align-items:center}
+.ev .d{font-family:var(--tit);text-align:center;background:var(--azul-esc);color:#fff;border-radius:6px;padding:8px 12px;min-width:64px}
+.ev .d b{display:block;font-size:20px}
+.ev .d span{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--ciano)}
+.ev h4{font-size:16px}
+.ev p{font-size:13px;color:var(--cinza)}
+.ed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:16px}
+.ed-card{background:#fff;border:1px solid var(--linha);border-radius:6px;overflow:hidden;text-align:center}
+.ed-card .capa-ed{aspect-ratio:3/4;background:linear-gradient(160deg,var(--azul-esc),var(--azul) 70%);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:14px;font-family:var(--tit)}
+.ed-card .capa-ed b{font-size:26px}
+.ed-card .capa-ed span{font-size:11px;color:var(--ciano)}
+.ed-card p{font-size:12.5px;color:var(--cinza);padding:10px}
+
+/* anuncie wizard */
+.wiz{background:#fff;border:1px solid var(--linha);border-radius:6px;padding:clamp(16px,3vw,30px)}
+.passos-w{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+.pw{font-family:var(--tit);font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:20px;background:#EEF1F3;color:var(--cinza)}
+.pw.on{background:var(--azul);color:#fff}
+.pw.ok{background:#DFF1E6;color:#1F6B3C}
+.planos{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.plano{border:2px solid var(--linha);border-radius:6px;padding:16px;cursor:pointer}
+.plano:hover{border-color:var(--azul)}
+.plano.sel{border-color:var(--azul);background:#EDF7FC}
+.plano h4{font-size:15px}
+.plano .pr{font-family:var(--tit);font-weight:800;font-size:22px;color:var(--azul-esc);margin:8px 0 4px}
+.plano p{font-size:12.5px;color:var(--cinza)}
+.campo{margin-bottom:12px}
+.campo label{display:block;font-family:var(--tit);font-size:12px;font-weight:700;color:var(--azul-esc);margin-bottom:5px}
+.campo input,.campo textarea{width:100%;padding:10px;border:1px solid var(--linha);border-radius:4px;font-size:14px;font-family:var(--txt)}
+.resumo{background:#F4F7F9;border-radius:6px;padding:16px;margin:16px 0}
+.resumo dl{display:grid;grid-template-columns:1fr auto;gap:8px 16px;font-size:14px}
+.resumo dd{font-weight:700;color:var(--azul-esc);text-align:right}
+.pix{background:#fff;border:2px dashed var(--azul);border-radius:6px;padding:22px;text-align:center;margin-top:16px}
+.pix .qr{width:130px;height:130px;margin:0 auto 12px;background:
+  repeating-linear-gradient(0deg,var(--tinta) 0 6px,transparent 6px 12px),
+  repeating-linear-gradient(90deg,var(--tinta) 0 6px,transparent 6px 14px);border:6px solid var(--tinta)}
+.ok-box{background:#DFF1E6;border:1px solid #9CD3AE;color:#1F6B3C;border-radius:6px;padding:18px;text-align:center;font-family:var(--tit)}
+
+footer.rod{background:var(--azul-esc);color:rgba(255,255,255,.85);margin-top:40px;padding:30px 0;font-size:13px}
+.rod .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.rod a{color:var(--ciano)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--tinta);color:#fff;padding:12px 22px;border-radius:6px;font-family:var(--tit);font-size:13.5px;opacity:0;transition:.3s;pointer-events:none;z-index:99}
+.toast.on{opacity:1}
+.hide{display:none!important}
+</style>
+</head>
+<body>
+<div class="demo-tarja">PROTÓTIPO NAVEGÁVEL · dados de exemplo · <b>versão do leitor</b> — <a href="../admin/" style="color:#32EDFF">ver o painel do jornal →</a></div>
+
+<header class="topo">
+  <div class="wrap topo-in">
+    <a class="logo" href="#/"><img src="../assets/logo.png" alt="Gazeta da Mooca"></a>
+    <div class="topo-dir" id="data-hoje"></div>
+  </div>
+  <nav class="menu"><div class="wrap menu-in" id="menu">
+    <a href="#/" data-r="capa">Capa</a>
+    <a href="#/ultimas" data-r="ultimas">Últimas Notícias</a>
+    <a href="#/agenda" data-r="agenda">Agenda</a>
+    <a href="#/guia" data-r="guia">Guia da Mooca</a>
+    <a href="#/classificados" data-r="classificados">Classificados</a>
+    <a href="#/edicoes" data-r="edicoes">Edições</a>
+    <a href="#/anuncie" data-r="anuncie" class="cta">Anuncie aqui</a>
+  </div></nav>
+  <div class="sub-faixa"><div class="wrap"><span>☀ 24°C na Mooca</span><span>⚽ Juventus x Nacional — sábado, 15h</span><span>📍 Feira da Rua Javari: sábado, 7h–13h</span></div></div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<footer class="rod"><div class="wrap">
+  <div><b>Gazeta da Mooca</b> · o jornal do bairro<br>CNPJ 00.000.000/0001-00 · São Paulo</div>
+  <div><a href="#/">Expediente</a> · <a href="#/">Política editorial</a> · <a href="#/">Correções</a> · <a href="#/">Privacidade</a> · <a href="#/anuncie">Anuncie</a></div>
+</div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== DADOS DE EXEMPLO ===================== */
+const NOTICIAS=[
+ {id:1,cat:"Mobilidade",t:"Obra na Rua da Mooca muda o trânsito por 90 dias",lf:"Trecho entre a Javari e a Bresser terá mão única a partir de segunda. Comerciantes pedem sinalização e a subprefeitura promete reunião na quinta.",autor:"Redação",h:"há 2 horas",destaque:1,
+  corpo:["A Rua da Mooca terá o trânsito alterado a partir da próxima segunda-feira no trecho entre a Rua Javari e a Rua Bresser, que passará a operar em mão única no sentido centro. A mudança, segundo a subprefeitura, é necessária para a obra de recapeamento e troca da rede de drenagem, com duração prevista de 90 dias.","Comerciantes da região se reuniram na tarde de ontem e entregaram um pedido formal por sinalização provisória e faixas de acesso às lojas. A subprefeitura confirmou reunião com a associação comercial na quinta-feira, às 10h.","Durante o período, as linhas de ônibus que passam pelo trecho terão desvio pela Avenida Paes de Barros. Os pontos serão realocados e sinalizados."]},
+ {id:2,cat:"Esportes",t:"Juventus vence e assume a liderança na Javari",lf:"Grená bate o Nacional por 2 a 1 e chega aos 24 pontos. Tabela completa e artilharia na página de esportes.",autor:"Redação",h:"há 5 horas",
+  corpo:["Com gols de Matheus Lima e do artilheiro Pedrinho, o Juventus venceu o Nacional por 2 a 1 na tarde deste domingo, na Rua Javari, e assumiu a liderança do grupo com 24 pontos.","O próximo compromisso do Moleque Travesso é no sábado, novamente em casa, contra o Barcelona Capela. A diretoria espera casa cheia: os ingressos antecipados já estão à venda na secretaria do clube."]},
+ {id:3,cat:"Comunidade",t:"Festa de São Vito abre inscrições para barracas",lf:"Prazo vai até 30 de agosto; taxa reduzida para moradores do bairro.",autor:"Redação",h:"ontem",
+  corpo:["A tradicional Festa de São Vito abriu nesta semana as inscrições para as barracas da edição 2026. Moradores da Mooca têm taxa reduzida e prioridade na escolha dos espaços até o dia 30 de agosto.","A festa, que acontece há mais de um século, é uma das maiores celebrações da herança italiana do bairro."]},
+ {id:4,cat:"Serviços",t:"Feira da Rua Javari muda de horário no inverno",lf:"Nova grade começa neste sábado e vale até setembro.",autor:"Redação",h:"ontem",
+  corpo:["A feira livre da Rua Javari passa a funcionar das 7h às 13h aos sábados durante os meses de inverno. A mudança atende pedido dos próprios feirantes.","A grade volta ao horário normal em setembro."]},
+ {id:5,cat:"Regionais",t:"UBS da Mooca amplia vacinação contra a gripe",lf:"Postos abrem também aos sábados até o fim do mês.",autor:"Redação",h:"há 2 dias",
+  corpo:["A UBS da Mooca amplia a campanha de vacinação contra a gripe: até o fim do mês, os postos abrem também aos sábados, das 8h às 16h, sem necessidade de agendamento."]},
+ {id:6,cat:"Sociais",t:"Colégio do bairro comemora 70 anos com exposição de fotos",lf:"Mostra reúne registros históricos de gerações de alunos.",autor:"Redação",h:"há 2 dias",
+  corpo:["A exposição fica aberta ao público no salão principal do colégio até o fim do mês, com entrada gratuita. Ex-alunos podem contribuir enviando fotos históricas pelo WhatsApp da Gazeta."]},
+ {id:7,cat:"Mobilidade",t:"Semáforo da Paes de Barros com Oratório volta a funcionar",lf:"Equipamento ficou 4 dias em pane e causou congestionamentos.",autor:"Redação",h:"há 3 dias",
+  corpo:["Após reclamações de leitores registradas pela Gazeta, a CET consertou o semáforo do cruzamento da Avenida Paes de Barros com a Rua do Oratório."]},
+ {id:8,cat:"Variedades",t:"Cantinas da Mooca preparam festival de inverno",lf:"Oito casas participam com menu especial a preço fixo.",autor:"Redação",h:"há 3 dias",
+  corpo:["O festival acontece durante todo o mês de agosto, com menus completos a preço fixo em oito cantinas tradicionais do bairro."]}
+];
+const EVENTOS=[
+ {d:"12",m:"AGO",t:"Missa e quermesse na Paróquia São Rafael",l:"Praça Padre Lourenço · 18h · grátis"},
+ {d:"14",m:"AGO",t:"Feira de adoção de pets",l:"Praça da Mooca · 10h às 16h · grátis"},
+ {d:"16",m:"AGO",t:"Juventus x Barcelona Capela",l:"Estádio da Rua Javari · 15h · R$ 20"},
+ {d:"17",m:"AGO",t:"Sarau da Mooca — música e poesia",l:"Casa de Cultura · 19h · grátis"},
+ {d:"22",m:"AGO",t:"Festival de Inverno das Cantinas",l:"Oito cantinas do bairro · a partir das 12h"},
+ {d:"30",m:"AGO",t:"Encerramento das inscrições — Festa de São Vito",l:"Secretaria da festa · até 17h"}
+];
+const GUIA=[
+ {cat:"Beleza",n:"Barbearia Mr. Gump",e:"Rua do Oratório, 454",s:"ds"},
+ {cat:"Confeitaria",n:"Di Cunto",e:"Rua Borges de Figueiredo, 61",s:"ds"},
+ {cat:"Construção",n:"Casa da Mooca",e:"Rua do Oratório, 808",s:"vf"},
+ {cat:"Alimentação",n:"Cantina D'Irene",e:"Rua Padre Raposo, 433",s:"vf"},
+ {cat:"Alimentação",n:"Don Carlini Ristorante",e:"Rua Dona Ana Neri, 265",s:"ds"},
+ {cat:"Beleza",n:"Studio 321",e:"Rua Visc. de Inhomerim, 321",s:"vf"},
+ {cat:"Alimentação",n:"Padaria Estoril",e:"Rua da Mooca, 2250",s:"vf"},
+ {cat:"Saúde",n:"Drogaria Sinete",e:"Rua da Mooca, 2287",s:"gr"},
+ {cat:"Pet",n:"Petz Mooca",e:"Av. Paes de Barros, 1654",s:"vf"},
+ {cat:"Alimentação",n:"Pizzaria Moinhos de Vento",e:"Rua Juvenal Parada, 94",s:"vf"},
+ {cat:"Educação",n:"Colégio Nossa Senhora Auxiliadora",e:"Rua da Mooca, 3541",s:"gr"},
+ {cat:"Saúde",n:"Acqua Fit Mooca",e:"Rua Itaqueri, 1200",s:"gr"},
+ {cat:"Automotivo",n:"Auto Peças Javari",e:"Rua Javari, 210",s:"vf"},
+ {cat:"Serviços",n:"Lavanderia Speed Mooca",e:"Rua Taquari, 500",s:"gr"}
+];
+const SELOS={vf:["s-vf","Verificado"],ds:["s-ds","Destaque"],gr:["s-gr","Ficha simples"]};
+const IMOVEIS=[
+ {t:"Sobrado reformado no Alto da Mooca, rua tranquila",a:"3 DORM · 1 SUÍTE · 2 VAGAS · 180 m²",v:"Castan Imóveis",tipo:"venda",dorm:3,preco:780000,pf:"R$ 780.000",ps:"venda",fotos:8},
+ {t:"Apartamento a 5 min. do metrô Bresser-Mooca",a:"2 DORM · 1 VAGA · 62 m² · MOBILIADO",v:"Picolomini Empreendimentos",tipo:"aluguel",dorm:2,preco:2400,pf:"R$ 2.400",ps:"por mês",fotos:12},
+ {t:"Casa térrea no Parque da Mooca, com quintal",a:"2 DORM · 2 VAGAS · 140 m² · TERRENO 250 m²",v:"Bella Casa Imóveis",tipo:"venda",dorm:2,preco:620000,pf:"R$ 620.000",ps:"venda",fotos:6},
+ {t:"Apartamento próximo à Rua da Mooca, aceita financiamento",a:"2 DORM · 1 VAGA · 58 m²",v:"morador do bairro · anúncio particular",tipo:"venda",dorm:2,preco:465000,pf:"R$ 465.000",ps:"venda",fotos:5},
+ {t:"Apto alto padrão no Mooca Plaza, andar alto",a:"3 DORM · 3 SUÍTES · 2 VAGAS · 128 m²",v:"Castan Imóveis",tipo:"venda",dorm:3,preco:1190000,pf:"R$ 1.190.000",ps:"venda",fotos:15},
+ {t:"Kitnet mobiliada perto da Juventus",a:"1 DORM · 28 m² · MOBILIADA",v:"Picolomini Empreendimentos",tipo:"aluguel",dorm:1,preco:1500,pf:"R$ 1.500",ps:"por mês",fotos:4}
+];
+const VEICULOS=[
+ {t:"Honda Civic EXL 2019, único dono, revisões em dia",a:"62.000 KM · AUTOMÁTICO · FLEX · PRATA",v:"Mooca Motors",pf:"R$ 89.900",ps:"à vista",fotos:9},
+ {t:"Fiat Argo Drive 1.3 2021, garantia de fábrica",a:"38.500 KM · MANUAL · FLEX · BRANCO",v:"X Car Multimarcas",pf:"R$ 62.500",ps:"ou financiado",fotos:14},
+ {t:"Honda Biz 125 2022, baixa quilometragem",a:"8.200 KM · VERMELHA · PARTIDA ELÉTRICA",v:"morador do bairro · anúncio particular",pf:"R$ 12.900",ps:"à vista",fotos:5},
+ {t:"VW T-Cross Comfortline 2020",a:"51.000 KM · AUTOMÁTICO · FLEX · CINZA",v:"Mooca Motors",pf:"R$ 108.000",ps:"à vista",fotos:11}
+];
+const EDICOES=[{n:412,d:"11 de agosto de 2026",m:"Obra na Rua da Mooca muda o trânsito"},{n:411,d:"4 de agosto de 2026",m:"Juventus embala terceira vitória seguida"},{n:410,d:"28 de julho de 2026",m:"Festival das cantinas movimenta o bairro"},{n:409,d:"21 de julho de 2026",m:"Especial: 70 anos do colégio da Mooca"}];
+const PLANOS=[
+ {id:"guia-vf",n:"Guia — Ficha verificada",pr:"R$ 39/mês",d:"Fotos, horário e WhatsApp na sua ficha do Guia da Mooca."},
+ {id:"guia-ds",n:"Guia — Destaque da categoria",pr:"R$ 99/mês",d:"Sua ficha no topo da categoria, com selo de destaque."},
+ {id:"side",n:"Site — Barra lateral da capa",pr:"R$ 249/mês",d:"Banner na capa do site, rotativo, 4 vagas. Com botão de WhatsApp."},
+ {id:"capa",n:"Site — Topo da capa",pr:"R$ 690/mês",d:"O maior espaço do site. Apenas 2 vagas."},
+ {id:"cls",n:"Classificado avulso",pr:"R$ 29 / 30 dias",d:"Para vender imóvel ou veículo. Até 8 fotos."},
+ {id:"news",n:"Patrocínio da newsletter",pr:"R$ 199 / edição",d:"Sua marca na newsletter que chega a 2.847 leitores."}
+];
+
+/* ===================== INFRA ===================== */
+const app=document.getElementById("app");
+const fmt=s=>s.replace(/\n/g,"<br>");
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)}
+function foto(h,label){return `<div class="foto" style="height:${h}px">${label?`<i>${label}</i>`:""}</div>`}
+function card(n){return `<a class="card mini" href="#/noticia/${n.id}" style="display:block;color:inherit">${foto(110,n.cat)}<h4>${n.t}</h4><p>${n.lf}</p></a>`}
+function sidebar(){return `<aside class="lat">
+  <div class="anuncio"><div class="rot">Publicidade</div><div class="nm">Cantina do Zé</div><div class="ds">Massa fresca todo dia.<br>Rua Javari, 340</div><button class="bt zap" style="margin-top:10px" onclick="toast('No site real, abre o WhatsApp do anunciante com a mensagem pronta: \\'vi seu anúncio na Gazeta\\'')">Chamar no WhatsApp</button></div>
+  <div class="card box"><h5>Agenda da semana</h5><ul>${EVENTOS.slice(0,4).map(e=>`<li><span class="dt">${e.d} ${e.m}</span><span>${e.t}</span></li>`).join("")}</ul><div style="padding:10px 13px"><a href="#/agenda">Ver agenda completa →</a></div></div>
+  <div class="nl"><h5>Receba a Gazeta por e-mail</h5><p>As notícias do bairro toda manhã, de graça. Sem propaganda misturada.</p><input id="nl-email" type="email" placeholder="seu@email.com.br"><button class="bt" onclick="nlOk()">Quero receber</button></div>
+  <div class="anuncio"><div class="rot">Publicidade</div><div class="nm">Imobiliária Bresser</div><div class="ds">Avaliamos seu imóvel de graça.</div></div>
+</aside>`}
+function nlOk(){const v=document.getElementById("nl-email").value;if(!v||!v.includes("@")){toast("Digite um e-mail válido");return}toast("Quase lá! Enviamos um link de confirmação para "+v)}
+
+/* ===================== VIEWS ===================== */
+const views={
+ capa(){const d=NOTICIAS[0];return `<div class="grid"><div>
+   <article class="manchete"><a href="#/noticia/${d.id}" style="color:inherit">${foto(280,d.cat)}<div style="padding-top:12px"><span class="chapeu">${d.cat}</span><h2>${d.t}</h2><p>${d.lf}</p><div class="assina">Por ${d.autor} · ${d.h} · Atualizada às 14h20</div></div></a></article>
+   <div class="sec-tit"><h3>Últimas do bairro</h3></div>
+   <div class="tres">${NOTICIAS.slice(1,4).map(card).join("")}</div>
+   <div class="sec-tit"><h3>Guia da Mooca</h3></div>
+   <div class="card" style="padding:14px"><p style="font-size:14px;color:var(--cinza)">312 estabelecimentos do bairro, conferidos pela redação.</p>
+   <div class="gcards" style="margin-top:12px">${GUIA.slice(0,4).map(g=>`<div class="gcard"><div class="cat">${g.cat}</div><h4>${g.n}</h4><p>${g.e}</p><span class="selo ${SELOS[g.s][0]}">${SELOS[g.s][1]}</span></div>`).join("")}</div>
+   <div style="margin-top:12px"><a class="bt ghost" href="#/guia">Ver o guia completo</a></div></div>
+   <div class="sec-tit"><h3>Mais lidas</h3></div>
+   <div class="card"><ul class="lista-n">${NOTICIAS.slice(4).map(n=>`<li><a href="#/noticia/${n.id}">${foto(60,"")}<span><h4>${n.t}</h4><div class="m">${n.cat} · ${n.h}</div></span></a></li>`).join("")}</ul></div>
+ </div>${sidebar()}</div>`},
+
+ ultimas(){return `<div class="grid"><div>
+   <div class="sec-tit"><h3>Últimas Notícias</h3></div>
+   <div class="card"><ul class="lista-n">${NOTICIAS.map(n=>`<li><a href="#/noticia/${n.id}">${foto(64,"")}<span><span class="chapeu">${n.cat}</span><h4>${n.t}</h4><div class="m">Por ${n.autor} · ${n.h}</div></span></a></li>`).join("")}</ul></div>
+ </div>${sidebar()}</div>`},
+
+ noticia(id){const n=NOTICIAS.find(x=>x.id==id)||NOTICIAS[0];const rel=NOTICIAS.filter(x=>x.id!=n.id&&x.cat==n.cat).concat(NOTICIAS.filter(x=>x.id!=n.id)).slice(0,3);
+  return `<div class="grid"><article class="art">
+   <span class="chapeu">${n.cat}</span><h1>${n.t}</h1><p class="lf">${n.lf}</p>
+   <div class="meta"><span>✍ Por <b>${n.autor}</b></span><span>publicada ${n.h}</span><span>⏱ 2 min de leitura</span></div>
+   ${foto(300,"")}<div style="font-size:11px;color:var(--cinza);margin:6px 0 18px">Foto: Arquivo / Gazeta da Mooca</div>
+   <div class="corpo">${n.corpo.map(p=>`<p>${p}</p>`).join("")}</div>
+   <div class="compart"><button class="bt zap" onclick="toast('No site real, compartilha direto no WhatsApp')">Compartilhar no WhatsApp</button><button class="bt ghost" onclick="toast('Link copiado!')">Copiar link</button></div>
+   <div class="tag-ia">Viu um erro nesta matéria? <a href="#" onclick="toast('Obrigado! A redação foi avisada.');return false">Avise a gente</a> · Nossa <a href="#" onclick="return false">política de correções</a></div>
+   <div class="sec-tit"><h3>Relacionadas</h3></div>
+   <div class="tres">${rel.map(card).join("")}</div>
+  </article>${sidebar()}</div>`},
+
+ agenda(){return `<div class="grid"><div>
+   <div class="sec-tit"><h3>Agenda da Mooca</h3></div>
+   <p style="font-size:14px;color:var(--cinza);margin-bottom:14px">O que acontece no bairro. Sua igreja, escola ou grupo tem um evento? <a href="#" onclick="toast('No site real, abre o formulário de envio — o evento entra após aprovação da redação');return false"><b>Envie para a agenda</b></a> — é grátis.</p>
+   ${EVENTOS.map(e=>`<div class="ev"><div class="d"><b>${e.d}</b><span>${e.m}</span></div><div style="flex:1"><h4>${e.t}</h4><p>${e.l}</p></div><button class="bt ghost" style="font-size:11.5px" onclick="toast('No site real: lembrete no seu WhatsApp 1 dia antes')">🔔 Lembrar</button></div>`).join("")}
+ </div>${sidebar()}</div>`},
+
+ guia(){return `<div>
+   <div class="sec-tit"><h3>Guia da Mooca</h3></div>
+   <p style="font-size:14.5px;color:var(--cinza)">O comércio e os serviços do bairro, conferidos pela redação. Quem paga aparece primeiro — sempre identificado. Quem não paga aparece do mesmo jeito.</p>
+   <div class="busca"><input id="gq" placeholder="O que você procura na Mooca? (ex.: pizza, barbearia, farmácia)" oninput="renderGuia()"><button class="bt" onclick="renderGuia()">Buscar</button></div>
+   <div class="chips" id="gchips"></div>
+   <div class="gdest"><div class="lg">MG</div><div><span class="selo s-ds">Destaque da categoria</span><h4 style="margin-top:4px">Barbearia Mr. Gump Mooca</h4><p style="font-size:13px;color:var(--cinza)">Rua do Oratório, 454 · Seg a sáb, 10h às 20h</p></div><button class="bt zap" onclick="toast('Abre o WhatsApp do anunciante')">Chamar no WhatsApp</button></div>
+   <div class="gcards" id="glist"></div>
+   <div class="card" style="margin-top:20px;padding:16px;text-align:center"><b style="font-family:var(--tit)">Tem um negócio na Mooca?</b><p style="font-size:13.5px;color:var(--cinza);margin:6px 0 10px">A ficha simples é grátis. Destaque a partir de R$ 39/mês.</p><a class="bt" href="#/anuncie">Colocar meu negócio no guia</a></div>
+ </div>`},
+
+ classificados(){return `<div>
+   <div class="sec-tit"><h3>Classificados</h3></div>
+   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><p style="font-size:14.5px;color:var(--cinza)">Imóveis e veículos à venda na Mooca e região.</p><a class="bt" href="#/anuncie">Anunciar meu imóvel ou carro</a></div>
+   <div class="abas"><span class="aba on" id="aba-im" onclick="clTab('im')">Imóveis · ${IMOVEIS.length}</span><span class="aba" id="aba-ve" onclick="clTab('ve')">Veículos · ${VEICULOS.length}</span></div>
+   <div class="filtros" id="cl-filtros">
+     <select id="f-tipo" onchange="renderCl()"><option value="">Comprar ou alugar</option><option value="venda">Comprar</option><option value="aluguel">Alugar</option></select>
+     <select id="f-dorm" onchange="renderCl()"><option value="">Dormitórios</option><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select>
+     <select id="f-preco" onchange="renderCl()"><option value="">Qualquer preço</option><option value="700000">Até R$ 700 mil</option><option value="900000">Até R$ 900 mil</option></select>
+   </div>
+   <div id="cl-lista"></div>
+ </div>`},
+
+ edicoes(){return `<div>
+   <div class="sec-tit"><h3>Edições impressas</h3></div>
+   <p style="font-size:14.5px;color:var(--cinza)">Todas as edições da Gazeta, para folhear no celular ou baixar em PDF.</p>
+   <div class="ed-grid">${EDICOES.map(e=>`<div class="ed-card"><div class="capa-ed"><span>GAZETA DA MOOCA</span><b>Nº ${e.n}</b><span>${e.d}</span></div><p><b>${e.m}</b></p><div style="padding:0 10px 12px"><button class="bt ghost" style="font-size:12px" onclick="toast('No site real, abre a edição folheável (flipbook)')">📖 Folhear</button></div></div>`).join("")}</div>
+ </div>`},
+
+ anuncie(){return `<div class="grid"><div class="wiz" id="wiz">
+   <div class="sec-tit" style="margin-top:0"><h3>Anuncie na Gazeta</h3></div>
+   <p style="font-size:14.5px;color:var(--cinza);margin-bottom:16px">Escolha o espaço, veja o preço e pague no Pix. Seu anúncio entra no ar depois de uma revisão rápida da redação — sem telefonema, sem boleto manual.</p>
+   <div class="passos-w"><span class="pw on" id="pw1">1 · Espaço</span><span class="pw" id="pw2">2 · Seus dados</span><span class="pw" id="pw3">3 · Pagamento</span><span class="pw" id="pw4">4 · Pronto</span></div>
+   <div id="wz1"><div class="planos">${PLANOS.map(p=>`<div class="plano" data-id="${p.id}" onclick="selPlano(this,'${p.id}')"><h4>${p.n}</h4><div class="pr">${p.pr}</div><p>${p.d}</p></div>`).join("")}</div>
+   <div style="margin-top:16px"><button class="bt" onclick="wzGo(2)">Continuar</button></div></div>
+   <div id="wz2" class="hide">
+     <div class="campo"><label>Nome do negócio</label><input id="an-nome" placeholder="Ex.: Cantina do Zé"></div>
+     <div class="campo"><label>Seu WhatsApp</label><input id="an-zap" placeholder="(11) 9...."></div>
+     <div class="campo"><label>E-mail</label><input id="an-email" placeholder="voce@email.com.br"></div>
+     <div class="campo"><label style="font-weight:400;font-size:12.5px;color:var(--cinza)"><input type="checkbox" id="an-termos" style="width:auto;margin-right:6px">Li e aceito os termos e a política de privacidade</label></div>
+     <div class="campo"><label style="font-weight:400;font-size:12.5px;color:var(--cinza)"><input type="checkbox" style="width:auto;margin-right:6px">Quero receber ofertas e novidades por e-mail <i>(opcional)</i></label></div>
+     <button class="bt ghost" onclick="wzGo(1)">← Voltar</button> <button class="bt" onclick="wzDados()">Ir para o pagamento</button></div>
+   <div id="wz3" class="hide">
+     <div class="resumo"><dl id="resumo-dl"></dl></div>
+     <div class="pix"><div class="qr"></div><b style="font-family:var(--tit)">Pague com Pix para ativar</b><p style="font-size:13px;color:var(--cinza);margin:6px 0 12px">Aponte a câmera do seu banco, ou use o copia-e-cola.</p><button class="bt ghost" onclick="toast('Código Pix copiado!')">Copiar código Pix</button> <button class="bt" onclick="wzGo(4)">Simular pagamento aprovado</button></div></div>
+   <div id="wz4" class="hide"><div class="ok-box"><div style="font-size:34px">✅</div><h3 style="margin:8px 0 6px">Pagamento confirmado!</h3><p style="font-weight:400;font-size:14px">Seu anúncio está na fila de aprovação da redação — normalmente sai em algumas horas. Você recebe a confirmação no WhatsApp e no e-mail, com o link do seu painel de anunciante.</p></div>
+   <div style="margin-top:14px;text-align:center"><a class="bt ghost" href="#/">Voltar para a capa</a></div></div>
+ </div>
+ <aside class="lat"><div class="card box"><h5>Por que anunciar aqui</h5><ul>
+   <li>📈 Leitores do bairro, não do Brasil inteiro</li><li>💬 Botão de WhatsApp em todo anúncio</li><li>📊 Você vê quantas pessoas viram e clicaram</li><li>🧾 Cobrança automática, com nota</li><li>📰 Combo com o jornal impresso e QR Code</li></ul></div>
+   <div class="anuncio"><div class="rot">Quem já anuncia</div><div class="ds" style="font-size:13px">Cantina do Zé · Imobiliária Bresser · Barbearia Mr. Gump · Di Cunto · Auto Peças Javari e mais 42 negócios do bairro</div></div>
+ </aside></div>`}
+};
+
+/* guia interativo */
+let gcat="Todos";
+function renderGuiaChips(){const cats=["Todos",...new Set(GUIA.map(g=>g.cat))];document.getElementById("gchips").innerHTML=cats.map(c=>`<span class="chip ${c===gcat?"on":""}" onclick="gcat='${c}';renderGuia()">${c}</span>`).join("")}
+function renderGuia(){const q=(document.getElementById("gq")?.value||"").toLowerCase();renderGuiaChips();
+ const list=GUIA.filter(g=>(gcat==="Todos"||g.cat===gcat)&&(!q||g.n.toLowerCase().includes(q)||g.cat.toLowerCase().includes(q)));
+ document.getElementById("glist").innerHTML=list.length?list.map(g=>`<div class="gcard"><div class="cat">${g.cat}</div><h4>${g.n}</h4><p>${g.e}</p><span class="selo ${SELOS[g.s][0]}">${SELOS[g.s][1]}</span><br><button class="bt zap" onclick="toast('Abre o WhatsApp de ${g.n.replace(/'/g,"")}')">WhatsApp</button></div>`).join(""):`<p style="grid-column:1/-1;color:var(--cinza)">Nada encontrado. <a href="#" onclick="toast('No site real, a redação recebe a sugestão');return false">Sugerir um estabelecimento</a></p>`}
+
+/* classificados interativos */
+let clAba="im";
+function clTab(t){clAba=t;document.getElementById("aba-im").classList.toggle("on",t==="im");document.getElementById("aba-ve").classList.toggle("on",t==="ve");document.getElementById("cl-filtros").style.display=t==="im"?"flex":"none";renderCl()}
+function renderCl(){let list;
+ if(clAba==="im"){const tp=document.getElementById("f-tipo").value,dm=document.getElementById("f-dorm").value,pr=document.getElementById("f-preco").value;
+  list=IMOVEIS.filter(i=>(!tp||i.tipo===tp)&&(!dm||(dm==="3"?i.dorm>=3:i.dorm==dm))&&(!pr||i.preco<=+pr))}
+ else list=VEICULOS;
+ document.getElementById("cl-lista").innerHTML=list.length?list.map(i=>`<div class="cl-item">${foto(88,i.fotos+" fotos")}<div><h4>${i.t}</h4><div class="cl-attr">${i.a}</div><div class="cl-vend">Anunciado por <b>${i.v}</b></div></div><div class="cl-preco">${i.pf}<small>${i.ps}</small></div></div>`).join(""):`<p style="color:var(--cinza);padding:20px 0">Nenhum anúncio com esses filtros. Limpe os filtros para ver todos.</p>`}
+
+/* anuncie wizard */
+let planoSel=null;
+function selPlano(el,id){document.querySelectorAll(".plano").forEach(p=>p.classList.remove("sel"));el.classList.add("sel");planoSel=PLANOS.find(p=>p.id===id)}
+function wzGo(n){if(n===2&&!planoSel){toast("Escolha um espaço primeiro");return}
+ for(let i=1;i<=4;i++){document.getElementById("wz"+i).classList.toggle("hide",i!==n);const pw=document.getElementById("pw"+i);pw.className="pw"+(i===n?" on":i<n?" ok":"")}
+ if(n===3){document.getElementById("resumo-dl").innerHTML=`<dt>${planoSel.n}</dt><dd>${planoSel.pr}</dd><dt>Anunciante</dt><dd>${document.getElementById("an-nome").value||"—"}</dd><dt>Aprovação da redação</dt><dd>inclusa</dd>`}
+ if(n===4)toast("No sistema real, o Pix cai via ASAAS e ativa tudo sozinho")}
+function wzDados(){const n=document.getElementById("an-nome").value,z=document.getElementById("an-zap").value,t=document.getElementById("an-termos").checked;
+ if(!n||!z){toast("Preencha o nome do negócio e o WhatsApp");return}
+ if(!t){toast("É preciso aceitar os termos para continuar");return}
+ wzGo(3)}
+
+/* router */
+function router(){const h=location.hash.replace(/^#\/?/,"")||"capa";const [r,arg]=h.split("/");
+ const fn=views[r]||views.capa;app.innerHTML=fn(arg);window.scrollTo(0,0);
+ document.querySelectorAll("#menu a").forEach(a=>a.classList.toggle("on",a.dataset.r===(views[r]?r:"capa")));
+ if(r==="guia")renderGuia();
+ if(r==="classificados")renderCl();
+}
+window.addEventListener("hashchange",router);
+document.getElementById("data-hoje").innerHTML=new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long",year:"numeric"})+"<br><b>Edição nº 412</b> · São Paulo";
+router();
+</script>
+</body>
+</html>

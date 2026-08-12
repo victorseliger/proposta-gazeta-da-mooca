@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel · Gazeta da Mooca</title>
+<link rel="icon" href="../assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#0085BD; --azul-esc:#043E79; --ciano:#32EDFF; --tinta:#161616;
+  --cinza:#5E6A70; --fundo:#F0F3F5; --linha:#DCE4E9; --lat:#0B2A4A;
+  --ok:#1F6B3C; --ok-bg:#DFF1E6; --al:#8A6512; --al-bg:#FFF3D6; --er:#A63A22; --er-bg:#F7E4DF;
+  --tit:'Open Sans',system-ui,sans-serif; --txt:'Roboto',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--txt);color:var(--tinta);background:var(--fundo);font-size:14.5px;line-height:1.5}
+a{color:var(--azul);text-decoration:none}
+h1,h2,h3,h4{font-family:var(--tit)}
+button{font-family:var(--tit);cursor:pointer}
+.hide{display:none!important}
+.demo-tarja{background:var(--tinta);color:#fff;font-size:12px;text-align:center;padding:6px 10px}
+.demo-tarja b{color:var(--ciano)}
+.demo-tarja a{color:var(--ciano)}
+
+/* login */
+.login{min-height:calc(100vh - 30px);display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--lat),var(--azul-esc) 70%)}
+.login-cx{background:#fff;border-radius:10px;padding:34px;width:min(400px,92vw);text-align:center}
+.login-cx img{height:30px;margin-bottom:6px}
+.login-cx .sub{font-family:var(--tit);font-size:11px;letter-spacing:.22em;color:var(--azul);text-transform:uppercase;margin-bottom:22px}
+.login-cx input{width:100%;padding:12px;border:1px solid var(--linha);border-radius:6px;font-size:14.5px;margin-bottom:10px}
+.bt{display:inline-block;background:var(--azul);color:#fff;font-weight:700;font-size:13px;padding:10px 18px;border:0;border-radius:5px}
+.bt:hover{background:var(--azul-esc)}
+.bt.ghost{background:transparent;color:var(--azul);border:1px solid var(--azul)}
+.bt.ok{background:#1FA855}.bt.er{background:var(--er)}
+.bt.mini{padding:6px 11px;font-size:11.5px}
+.login-cx .bt{width:100%;padding:12px}
+.login-cx p{font-size:12px;color:var(--cinza);margin-top:14px}
+
+/* shell */
+.shell{display:grid;grid-template-columns:212px 1fr;min-height:calc(100vh - 30px)}
+@media(max-width:840px){.shell{grid-template-columns:1fr}.lat{position:sticky;top:0;z-index:10}}
+.lat{background:var(--lat);color:#fff;padding:14px 0}
+.lat .lg{padding:0 16px 12px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:10px}
+.lat .lg img{width:100%;max-width:170px;height:auto;filter:brightness(0) invert(1)}
+.lat .lg small{display:block;font-family:var(--tit);font-size:8.5px;letter-spacing:.25em;color:var(--ciano);margin-top:4px}
+.lat .div{font-family:var(--tit);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:12px 16px 4px}
+.lat a{display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.72);font-family:var(--tit);font-size:13px;font-weight:600;padding:8px 16px}
+.lat a.on{background:var(--azul);color:#fff}
+.lat .badge{background:var(--er);color:#fff;font-size:10px;font-weight:700;border-radius:9px;padding:1px 7px}
+.main{padding:20px 22px 60px;max-width:1060px}
+.topo{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.topo h2{font-size:21px;font-weight:800}
+.topo .sub{font-size:13px;color:var(--cinza);margin-top:3px}
+
+/* widgets */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
+.kpi{background:#fff;border:1px solid var(--linha);border-left:4px solid var(--azul);border-radius:6px;padding:13px 14px}
+.kpi.al{border-left-color:#C9922B}.kpi.er{border-left-color:var(--er)}.kpi.ok{border-left-color:#1FA855}
+.kpi dt{font-family:var(--tit);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);margin-bottom:5px}
+.kpi dd{font-family:var(--tit);font-size:22px;font-weight:800}
+.kpi dd span{display:block;font-family:var(--txt);font-size:12px;font-weight:400;color:var(--cinza);margin-top:2px}
+.cx{background:#fff;border:1px solid var(--linha);border-radius:6px;overflow:hidden;margin-bottom:16px}
+.cx>h4{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:11px 14px;border-bottom:1px solid var(--linha);color:var(--azul-esc);display:flex;justify-content:space-between;align-items:center}
+.cx .pad{padding:14px}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;align-items:start}
+@media(max-width:900px){.cols{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-family:var(--tit);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--cinza);text-align:left;padding:9px 14px;background:#FAFBFC;font-weight:600}
+td{padding:10px 14px;border-top:1px solid #EFF2F4;vertical-align:middle}
+.vl{font-family:var(--tit);font-weight:700}
+.tag{display:inline-block;font-family:var(--tit);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:3px;white-space:nowrap}
+.t-ok{background:var(--ok-bg);color:var(--ok)}.t-al{background:var(--al-bg);color:var(--al)}.t-er{background:var(--er-bg);color:var(--er)}.t-ne{background:#EEF1F3;color:var(--cinza)}
+.li{list-style:none}
+.li li{padding:11px 14px;border-top:1px solid #EFF2F4;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.li li:first-child{border-top:0}
+.li b{display:block;font-family:var(--tit);font-size:13.5px}
+.li small{font-size:11.5px;color:var(--cinza)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--tinta);color:#fff;padding:12px 22px;border-radius:6px;font-family:var(--tit);font-size:13.5px;opacity:0;transition:.3s;pointer-events:none;z-index:99;max-width:90vw;text-align:center}
+.toast.on{opacity:1}
+
+/* editor */
+.campo{margin-bottom:12px}
+.campo label{display:block;font-family:var(--tit);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--azul-esc);margin-bottom:5px}
+.campo input,.campo textarea,.campo select{width:100%;padding:10px;border:1px solid var(--linha);border-radius:5px;font-size:14px;font-family:var(--txt);background:#fff}
+.ia-box{background:var(--lat);border-radius:6px;padding:16px;color:#fff;margin-bottom:14px}
+.ia-box h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ciano);margin-bottom:8px}
+.ia-box textarea{width:100%;border:0;border-radius:5px;padding:10px;font-size:13.5px;font-family:var(--txt);min-height:64px}
+.ia-box .bt{background:var(--ciano);color:var(--lat);margin-top:10px}
+.apurar{background:var(--er-bg);border-left:4px solid var(--er);border-radius:4px;padding:11px 13px;font-size:13px;margin:12px 0}
+.apurar b{color:var(--er);font-family:var(--tit);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:5px}
+.bloco-ia{background:#F4F9FC;border:1px solid #CFE5F0;border-radius:5px;padding:10px 12px;margin-bottom:8px;font-size:14px}
+.bloco-ia .origem{font-family:var(--tit);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--azul);margin-top:5px}
+.aviso-ia{font-size:12px;color:var(--cinza);background:#FAFBFC;border:1px solid var(--linha);border-radius:4px;padding:9px 12px;margin:10px 0}
+
+/* espelho */
+.esp{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.esp .pg{aspect-ratio:3/4;border:2px solid var(--linha);border-radius:4px;background:#fff;padding:7px;font-family:var(--tit);font-size:9.5px;color:var(--cinza);display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;user-select:none}
+.esp .pg b{font-size:15px}
+.esp .pg .st{font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:700}
+.esp .pg.pronta{background:var(--ok-bg);border-color:#1FA855}.esp .pg.pronta .st{color:var(--ok)}
+.esp .pg.producao{background:var(--al-bg);border-color:#C9922B}.esp .pg.producao .st{color:var(--al)}
+.esp .pg.vazia{background:var(--er-bg);border-color:var(--er)}.esp .pg.vazia .st{color:var(--er)}
+.esp .pg.anuncio{background:#E4F2F9;border-color:var(--azul)}.esp .pg.anuncio .st{color:var(--azul)}
+.barra-prog{height:8px;background:#EEF1F3;border-radius:4px;overflow:hidden;margin:10px 0}
+.barra-prog i{display:block;height:100%;background:linear-gradient(90deg,var(--azul),#1FA855)}
+
+/* whatsapp */
+.wa{background:#E7E0D6;border-radius:6px;padding:14px;max-height:420px;overflow-y:auto}
+.bl{max-width:82%;padding:9px 12px;font-size:13.5px;line-height:1.45;margin-bottom:9px;border-radius:8px;background:#fff}
+.bl.dir{background:#D6E6D3;margin-left:auto}
+.bl small{display:block;font-family:var(--tit);font-size:9px;color:#8A857C;margin-top:5px}
+.wa-in{display:flex;gap:8px;margin-top:10px}
+.wa-in input{flex:1;padding:10px;border:1px solid var(--linha);border-radius:5px;font-size:13.5px}
+
+/* aparência */
+.tokens{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.token{background:#fff;border:1px solid var(--linha);border-radius:6px;padding:12px;text-align:center}
+.token input[type=color]{width:52px;height:52px;border:0;background:none;cursor:pointer}
+.token label{display:block;font-family:var(--tit);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cinza);margin-top:5px}
+.mini-site{border:1px solid var(--linha);border-radius:6px;overflow:hidden;margin-top:14px}
+.ms-top{padding:12px 14px;color:#fff;font-family:var(--tit);font-weight:800}
+.ms-nav{display:flex;gap:0}
+.ms-nav span{color:#fff;font-family:var(--tit);font-size:10.5px;font-weight:600;padding:7px 11px;opacity:.9}
+.ms-body{padding:12px 14px;background:#fff}
+.ms-chapeu{font-family:var(--tit);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ms-body h5{font-family:var(--tit);font-size:16px;margin:3px 0 5px}
+.ms-body p{font-size:11.5px;color:var(--cinza)}
+</style>
+</head>
+<body>
+<div class="demo-tarja">PROTÓTIPO NAVEGÁVEL · dados de exemplo · <b>painel do jornal</b> — <a href="../site/">ver o site do leitor →</a></div>
+
+<!-- LOGIN -->
+<div class="login" id="tela-login">
+  <div class="login-cx">
+    <img src="../assets/logo.png" alt="Gazeta da Mooca">
+    <div class="sub">Painel do jornal</div>
+    <input type="email" id="login-email" placeholder="seu@email.com.br" value="joao@gazetadamooca.com">
+    <button class="bt" onclick="magic()">Receber link de acesso por e-mail</button>
+    <p>Sem senha para decorar: você recebe um link no e-mail e entra com um clique.<br><br><a href="#" onclick="entrar();return false"><b>→ Simular o clique no link (entrar como João)</b></a></p>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="shell hide" id="tela-app">
+  <nav class="lat">
+    <div class="lg"><img src="../assets/logo.png" alt="Gazeta da Mooca"><small>PAINEL</small></div>
+    <a href="#/dash" data-r="dash">Painel do dia</a>
+    <div class="div">Jornal</div>
+    <a href="#/materias" data-r="materias">Matérias</a>
+    <a href="#/espelho" data-r="espelho">Edição impressa</a>
+    <a href="#/agenda" data-r="agenda">Agenda <span class="badge" id="bd-ag">2</span></a>
+    <div class="div">Dinheiro</div>
+    <a href="#/moderacao" data-r="moderacao">Classificados <span class="badge" id="bd-mod">4</span></a>
+    <a href="#/anunciantes" data-r="anunciantes">Anunciantes</a>
+    <a href="#/cobrancas" data-r="cobrancas">Cobranças <span class="badge" id="bd-cob">2</span></a>
+    <div class="div">Leitores</div>
+    <a href="#/newsletter" data-r="newsletter">Newsletter</a>
+    <a href="#/whatsapp" data-r="whatsapp">WhatsApp</a>
+    <div class="div">Sistema</div>
+    <a href="#/aparencia" data-r="aparencia">Aparência</a>
+    <a href="../site/" style="color:var(--ciano)">Ver o site →</a>
+  </nav>
+  <main class="main" id="app"></main>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== ESTADO (mock) ===================== */
+const S={
+ materias:[
+  {id:1,t:"Obra na Rua da Mooca muda o trânsito por 90 dias",cat:"Mobilidade",autor:"Ana Paula",st:"publicada",ia:true,rev:"João Batista"},
+  {id:2,t:"Juventus vence e assume a liderança na Javari",cat:"Esportes",autor:"Carlos Mota",st:"publicada",ia:false},
+  {id:3,t:"Festival de inverno das cantinas — guia completo",cat:"Variedades",autor:"Ana Paula",st:"revisao",ia:true,rev:null},
+  {id:4,t:"Entrevista: 40 anos da banca da Praça da Mooca",cat:"Sociais",autor:"Carlos Mota",st:"rascunho",ia:false},
+  {id:5,t:"Feira da Rua Javari muda de horário no inverno",cat:"Serviços",autor:"Ana Paula",st:"publicada",ia:true,rev:"João Batista"}],
+ mod:[
+  {id:1,t:"Apto 2 dorm. próximo ao metrô Bresser",v:"Picolomini Empreendimentos",tipo:"Imóvel · profissional",flag:null},
+  {id:2,t:"Honda Biz 125 2022, baixa km",v:"Roberto S. (particular)",tipo:"Veículo · particular",flag:null},
+  {id:3,t:"Empréstimo facilitado, dinheiro na hora",v:"desconhecido",tipo:"Serviço",flag:"🚫 bloqueio sugerido pela triagem: oferta de crédito irregular"},
+  {id:4,t:"Sobrado no Alto da Mooca, 3 dorm.",v:"Castan Imóveis",tipo:"Imóvel · profissional",flag:null}],
+ eventosMod:[
+  {id:1,t:"Quermesse da Paróquia São Rafael",o:"Paróquia São Rafael",d:"12/08 · 18h"},
+  {id:2,t:"Festa junina fora de época da escola municipal",o:"EMEF Mooca",d:"19/08 · 14h"}],
+ cobrancas:[
+  {a:"Cantina do Zé",p:"Box mensal",v:129,st:"pago",info:"Pago via Pix"},
+  {a:"Salão Dona Rita",p:"Classificado",v:49,st:"pago",info:"Pago"},
+  {a:"Imobiliária Bresser",p:"Capa do site",v:690,st:"aberto",info:"Vence em 3 dias"},
+  {a:"Auto Peças Javari",p:"Meia página impresso",v:380,st:"atraso",info:"Atrasado 6 dias · anúncio suspenso"},
+  {a:"Padaria São Vito",p:"Guia — Destaque",v:260,st:"atraso",info:"Atrasado 2 dias · no ar (em risco)"}],
+ anunciantes:[
+  {n:"Cantina do Zé",c:"Alimentação",pl:"Box mensal",mrr:129,desde:"mar/2026",st:"ativo"},
+  {n:"Imobiliária Bresser",c:"Imóveis",pl:"Capa do site",mrr:690,desde:"jan/2026",st:"ativo"},
+  {n:"Barbearia Mr. Gump",c:"Beleza",pl:"Guia — Destaque",mrr:99,desde:"fev/2026",st:"ativo"},
+  {n:"Auto Peças Javari",c:"Automotivo",pl:"Meia página",mrr:380,desde:"nov/2025",st:"suspenso"},
+  {n:"Padaria São Vito",c:"Alimentação",pl:"Guia — Destaque",mrr:260,desde:"abr/2026",st:"risco"},
+  {n:"Di Cunto",c:"Confeitaria",pl:"Guia — Destaque",mrr:99,desde:"jun/2026",st:"ativo"}],
+ espelho:[
+  {n:1,sec:"CAPA",st:"pronta"},{n:2,sec:"OPINIÃO",st:"pronta"},{n:3,sec:"DESTAQUE",st:"anuncio"},{n:4,sec:"BAIRRO",st:"pronta"},
+  {n:5,sec:"BAIRRO",st:"pronta"},{n:6,sec:"SERVIÇO",st:"vazia"},{n:7,sec:"CULTURA",st:"pronta"},{n:8,sec:"ESPORTE",st:"pronta"},
+  {n:9,sec:"ESPORTE",st:"producao"},{n:10,sec:"AGENDA",st:"pronta"},{n:11,sec:"CLASSIF.",st:"pronta"},{n:12,sec:"CLASSIF.",st:"producao"},
+  {n:13,sec:"OBITUÁRIO",st:"pronta"},{n:14,sec:"MEMÓRIA",st:"vazia"},{n:15,sec:"SÃO VITO",st:"producao"},{n:16,sec:"CONTRACAPA",st:"anuncio"}],
+ draft:null
+};
+const CICLO={pronta:"producao",producao:"vazia",vazia:"pronta",anuncio:"anuncio"};
+const ST_MAT={publicada:["t-ok","Publicada"],revisao:["t-al","Em revisão"],rascunho:["t-ne","Rascunho"],agendada:["t-al","Agendada"]};
+const ST_AN={ativo:["t-ok","Ativo"],risco:["t-al","Em risco"],suspenso:["t-er","Suspenso"]};
+const R$=v=>"R$ "+v.toLocaleString("pt-BR");
+
+const app=document.getElementById("app");
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),3200)}
+function magic(){toast("Link de acesso enviado para "+document.getElementById("login-email").value+" — clique no atalho abaixo para simular")}
+function entrar(){document.getElementById("tela-login").classList.add("hide");document.getElementById("tela-app").classList.remove("hide");router()}
+
+/* ===================== VIEWS ===================== */
+const views={
+ dash(){const atraso=S.cobrancas.filter(c=>c.st==="atraso"),soma=atraso.reduce((s,c)=>s+c.v,0);
+  return `<div class="topo"><div><h2>Bom dia, João</h2><div class="sub">${new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"numeric",month:"long"})} · ${S.mod.length+S.eventosMod.length} coisas pedem sua atenção hoje</div></div><a class="bt" href="#/materias/nova">+ Nova matéria</a></div>
+  <dl class="kpis">
+   <div class="kpi ok"><dt>Faturado em agosto</dt><dd>R$ 9.480<span>+18% sobre julho</span></dd></div>
+   <div class="kpi"><dt>Anunciantes ativos</dt><dd>${S.anunciantes.filter(a=>a.st==="ativo").length + S.anunciantes.filter(a=>a.st==="risco").length}<span>3 novos este mês</span></dd></div>
+   <div class="kpi al"><dt>A receber até dia 20</dt><dd>R$ 3.150<span>7 cobranças abertas</span></dd></div>
+   <div class="kpi er"><dt>Em atraso</dt><dd>${R$(soma)}<span>${atraso.length} anunciantes</span></dd></div>
+  </dl>
+  <div class="cols"><div class="cx"><h4>Cobranças recentes <a href="#/cobrancas">ver todas</a></h4>
+   <table><thead><tr><th>Anunciante</th><th>Plano</th><th>Valor</th><th>Situação</th></tr></thead><tbody>
+   ${S.cobrancas.map(c=>`<tr><td>${c.a}</td><td>${c.p}</td><td class="vl">${R$(c.v)}</td><td><span class="tag ${c.st==="pago"?"t-ok":c.st==="aberto"?"t-al":"t-er"}">${c.info}</span></td></tr>`).join("")}
+  </tbody></table></div>
+  <div class="cx"><h4>Precisa de você</h4><ul class="li">
+   <li><div><b>${S.mod.length} classificados aguardando</b><small>Enviados pelo site</small></div><a class="bt mini" href="#/moderacao">Aprovar</a></li>
+   <li><div><b>${S.eventosMod.length} eventos submetidos</b><small>Paróquia e escola municipal</small></div><a class="bt mini ghost" href="#/agenda">Revisar</a></li>
+   <li><div><b>Edição 413 fecha sexta</b><small id="dash-esp"></small></div><a class="bt mini ghost" href="#/espelho">Ver espelho</a></li>
+   <li><div><b>Auto Peças Javari</b><small>Régua: cobrança D+5 enviada no WhatsApp</small></div><a class="bt mini ghost" href="#/cobrancas">Acompanhar</a></li>
+   <li><div><b>Newsletter de amanhã</b><small>Sai às 6h30 · 2.847 leitores</small></div><span class="tag t-ok">Pronta</span></li>
+  </ul></div></div>`},
+
+ materias(sub){if(sub==="nova")return views.editor();
+  return `<div class="topo"><div><h2>Matérias</h2><div class="sub">${S.materias.length} matérias · ${S.materias.filter(m=>m.st==="publicada").length} publicadas</div></div><a class="bt" href="#/materias/nova">+ Nova matéria</a></div>
+  <div class="cx"><table><thead><tr><th>Título</th><th>Editoria</th><th>Autor</th><th>IA</th><th>Situação</th></tr></thead><tbody>
+  ${S.materias.map(m=>`<tr><td><b style="font-family:var(--tit)">${m.t}</b>${m.ia&&m.rev?`<br><small style="color:var(--cinza)">com apoio de IA · revisada por ${m.rev}</small>`:""}</td><td>${m.cat}</td><td>${m.autor}</td><td>${m.ia?'<span class="tag t-al">IA</span>':"—"}</td><td><span class="tag ${ST_MAT[m.st][0]}">${ST_MAT[m.st][1]}</span>${m.st==="revisao"?` <button class="bt mini" onclick="aprovarMat(${m.id})">Revisar e publicar</button>`:""}</td></tr>`).join("")}
+  </tbody></table></div>
+  <div class="aviso-ia">ℹ Matéria escrita com apoio do assistente <b>nunca publica sozinha</b>: ela fica travada em "Em revisão" até um jornalista assinar a revisão. O rodapé público declara o uso de IA e quem revisou.</div>`},
+
+ editor(){return `<div class="topo"><div><h2>Nova matéria</h2><div class="sub">Comece com o assistente ou escreva do zero</div></div><a class="bt ghost" href="#/materias">← Voltar</a></div>
+  <div class="ia-box"><h4>✦ Começar com o assistente</h4>
+  <textarea id="ia-prompt" placeholder="Conte em poucas linhas o que aconteceu...">Vazamento de água na Rua Taquari altura do 800 desde ontem à noite, Sabesp esteve no local de manhã, previsão de conserto até sexta, trânsito lento no trecho</textarea>
+  <button class="bt" onclick="gerarIA()">Montar o texto</button><span style="font-size:11.5px;opacity:.7;margin-left:10px">O assistente organiza — quem apura e publica é você.</span></div>
+  <div id="ia-out"></div>
+  <div class="cx"><h4>Ou escreva do zero</h4><div class="pad">
+   <div class="campo"><label>Título</label><input placeholder="Título da matéria"></div>
+   <div class="campo"><label>Editoria</label><select><option>Bairro</option><option>Mobilidade</option><option>Esportes</option><option>Variedades</option><option>Sociais</option></select></div>
+   <div class="campo"><label>Texto</label><textarea style="min-height:120px" placeholder="Corpo da matéria..."></textarea></div>
+   <button class="bt ghost" onclick="toast('Rascunho salvo')">Salvar rascunho</button></div></div>`},
+
+ moderacao(){return `<div class="topo"><div><h2>Classificados para aprovar</h2><div class="sub">Enviados pelo site — nada entra no ar sem a sua aprovação</div></div></div>
+  ${S.mod.length?`<div class="cx"><ul class="li">${S.mod.map(m=>`<li><div style="flex:1"><b>${m.t}</b><small>${m.tipo} · por ${m.v}</small>${m.flag?`<div class="apurar" style="margin:8px 0 0"><b>Triagem automática</b>${m.flag}</div>`:""}</div><div style="display:flex;gap:6px"><button class="bt mini ok" onclick="modAcao(${m.id},'aprovado')">Aprovar</button><button class="bt mini er" onclick="modAcao(${m.id},'rejeitado')">Rejeitar</button></div></li>`).join("")}</ul></div>`
+  :`<div class="cx pad" style="padding:30px;text-align:center;color:var(--cinza)">🎉 Fila limpa! Nenhum classificado aguardando.</div>`}
+  <div class="aviso-ia">ℹ A triagem automática já bloqueia golpe, agiotagem e conteúdo proibido antes de chegar aqui. O que você vê é só o que precisa de olho humano.</div>`},
+
+ agenda(){return `<div class="topo"><div><h2>Eventos submetidos</h2><div class="sub">Enviados pela comunidade pelo site e pelo WhatsApp</div></div></div>
+  ${S.eventosMod.length?`<div class="cx"><ul class="li">${S.eventosMod.map(e=>`<li><div><b>${e.t}</b><small>${e.o} · ${e.d}</small></div><div style="display:flex;gap:6px"><button class="bt mini ok" onclick="evAcao(${e.id},'aprovado')">Aprovar</button><button class="bt mini er" onclick="evAcao(${e.id},'rejeitado')">Rejeitar</button></div></li>`).join("")}</ul></div>`
+  :`<div class="cx pad" style="padding:30px;text-align:center;color:var(--cinza)">🎉 Nenhum evento aguardando revisão.</div>`}`},
+
+ anunciantes(){const mrr=S.anunciantes.filter(a=>a.st!=="suspenso").reduce((s,a)=>s+a.mrr,0);
+  return `<div class="topo"><div><h2>Anunciantes</h2><div class="sub">${S.anunciantes.length} cadastrados · ${R$(mrr)}/mês recorrentes</div></div><button class="bt" onclick="toast('No sistema real: cadastro com CNPJ preenchido automaticamente')">+ Novo anunciante</button></div>
+  <div class="cx"><table><thead><tr><th>Anunciante</th><th>Categoria</th><th>Plano</th><th>Mensalidade</th><th>Cliente desde</th><th>Situação</th></tr></thead><tbody>
+  ${S.anunciantes.map(a=>`<tr><td><b style="font-family:var(--tit)">${a.n}</b></td><td>${a.c}</td><td>${a.pl}</td><td class="vl">${R$(a.mrr)}</td><td>${a.desde}</td><td><span class="tag ${ST_AN[a.st][0]}">${ST_AN[a.st][1]}</span></td></tr>`).join("")}
+  </tbody></table></div>`},
+
+ cobrancas(){return `<div class="topo"><div><h2>Cobranças</h2><div class="sub">Pix, boleto e cartão via ASAAS — caem direto na conta do jornal</div></div></div>
+  <div class="cols"><div class="cx"><h4>Agosto</h4><table><thead><tr><th>Anunciante</th><th>Valor</th><th>Situação</th><th></th></tr></thead><tbody>
+  ${S.cobrancas.map((c,i)=>`<tr><td><b style="font-family:var(--tit)">${c.a}</b><br><small style="color:var(--cinza)">${c.p}</small></td><td class="vl">${R$(c.v)}</td><td><span class="tag ${c.st==="pago"?"t-ok":c.st==="aberto"?"t-al":"t-er"}">${c.info}</span></td><td>${c.st!=="pago"?`<button class="bt mini ghost" onclick="segundaVia(${i})">2ª via</button>`:""}</td></tr>`).join("")}
+  </tbody></table></div>
+  <div class="cx"><h4>Como a régua cobra por você</h4><ul class="li">
+   <li><div><b>3 dias antes</b><small>Lembrete amigável no WhatsApp, com o Pix</small></div><span class="tag t-ok">auto</span></li>
+   <li><div><b>No vencimento</b><small>Aviso — o anúncio continua no ar</small></div><span class="tag t-ok">auto</span></li>
+   <li><div><b>2 dias de atraso</b><small>Segunda via automática</small></div><span class="tag t-ok">auto</span></li>
+   <li><div><b>5 dias</b><small>Sai do ar + oferta de parcelar ou trocar de plano</small></div><span class="tag t-al">auto</span></li>
+   <li><div><b>8 dias</b><small>Vira tarefa sua, para ligar pessoalmente</small></div><span class="tag t-er">você</span></li>
+  </ul><div class="pad" style="border-top:1px solid var(--linha)"><small style="color:var(--cinza)">Mensagens saem no nome do jornal, 1 por dia no máximo, nunca de madrugada nem domingo. Quem responder "não quero mais" sai da régua na hora.</small></div></div></div>`},
+
+ espelho(){const done=S.espelho.filter(p=>p.st==="pronta"||p.st==="anuncio").length,pct=Math.round(done/16*100);
+  const falta=S.espelho.filter(p=>p.st==="vazia").length,prod=S.espelho.filter(p=>p.st==="producao").length;
+  return `<div class="topo"><div><h2>Edição 413 — espelho</h2><div class="sub">Fecha sexta às 18h · 16 páginas · tabloide</div></div>
+  <button class="bt ${falta?"ghost":""}" onclick="fecharEd(${falta},${prod})">Gerar PDF para a gráfica</button></div>
+  <div class="barra-prog"><i style="width:${pct}%"></i></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+   <span class="tag t-ok">${done} prontas</span><span class="tag t-al">${prod} em produção</span><span class="tag t-er">${falta} vazias</span>
+   <span class="tag t-ne">clique numa página para mudar o status</span></div>
+  <div class="esp">${S.espelho.map((p,i)=>`<div class="pg ${p.st}" onclick="espClick(${i})"><b>${p.n}</b><span>${p.sec}</span><span class="st">${p.st==="anuncio"?"anúncio ok":p.st==="producao"?"em produção":p.st}</span></div>`).join("")}</div>
+  <div class="aviso-ia" style="margin-top:14px">ℹ Antes de gerar o PDF, o sistema confere sozinho: texto que não coube, foto de baixa resolução, anúncio sem arte e <b>se todos os QR Codes funcionam</b>. Só libera para a gráfica quando está tudo certo.</div>`},
+
+ newsletter(){return `<div class="topo"><div><h2>Newsletter</h2><div class="sub">"Bom dia, Mooca" · diária, 6h30</div></div><button class="bt" onclick="toast('Edição de amanhã montada automaticamente com as matérias do dia — você só revisa')">Montar edição de amanhã</button></div>
+  <dl class="kpis">
+   <div class="kpi"><dt>Leitores inscritos</dt><dd>2.847<span>+112 este mês</span></dd></div>
+   <div class="kpi ok"><dt>Abertura média</dt><dd>61%<span>muito acima da média</span></dd></div>
+   <div class="kpi"><dt>Cliques</dt><dd>18%<span>por edição</span></dd></div>
+   <div class="kpi al"><dt>Lista de publicidade</dt><dd>734<span>separada, com consentimento próprio</span></dd></div>
+  </dl>
+  <div class="cx"><h4>Últimos envios</h4><table><thead><tr><th>Edição</th><th>Enviada</th><th>Abertura</th><th>Cliques</th></tr></thead><tbody>
+   <tr><td>Bom dia, Mooca — 11/08</td><td>hoje, 6h30</td><td class="vl">63%</td><td class="vl">21%</td></tr>
+   <tr><td>Bom dia, Mooca — 10/08</td><td>ontem, 6h30</td><td class="vl">60%</td><td class="vl">17%</td></tr>
+   <tr><td>Fim de semana na Mooca</td><td>quinta, 17h</td><td class="vl">58%</td><td class="vl">24%</td></tr>
+  </tbody></table></div>
+  <div class="aviso-ia">ℹ A lista de notícias e a de publicidade são separadas por lei: quem assinou para receber notícia <b>não</b> recebe propaganda, a menos que tenha marcado a caixinha própria. O sistema cuida disso sozinho.</div>`},
+
+ whatsapp(){return `<div class="topo"><div><h2>WhatsApp da Gazeta</h2><div class="sub">O assistente responde sozinho · você acompanha e assume quando quiser</div></div><span class="tag t-ok">● conectado</span></div>
+  <dl class="kpis">
+   <div class="kpi"><dt>Conversas hoje</dt><dd>34<span>28 resolvidas pelo assistente</span></dd></div>
+   <div class="kpi ok"><dt>Leads de anúncio</dt><dd>3<span>encaminhados ao comercial</span></dd></div>
+   <div class="kpi"><dt>Pautas recebidas</dt><dd>5<span>de leitores, com foto</span></dd></div>
+  </dl>
+  <div class="cx"><h4>Conversa de agora — leitor</h4><div class="pad"><div class="wa" id="wa-chat">
+   <div class="bl">Boa noite! Preciso de um cabeleireiro aqui na Mooca, sabe algum?<small>22:14</small></div>
+   <div class="bl dir">Boa noite! 👋 Sou o assistente da Gazeta. No nosso guia tem três pertinho:<br><br>💈 <b>Barbearia Mr. Gump</b> — Rua do Oratório, 454 <i>(anunciante da Gazeta)</i><br>💈 Studio 321 — Rua Visc. de Inhomerim, 321<br>💈 Barbearia do Tonho — Rua Javari, 55<br><br>Quer o WhatsApp de algum?<small>22:14 · assistente</small></div>
+  </div>
+  <div class="wa-in"><input id="wa-msg" placeholder="Pergunte como se fosse o leitor... (ex.: tem jogo do Juventus?)" onkeydown="if(event.key==='Enter')waSend()"><button class="bt" onclick="waSend()">Enviar</button></div>
+  <small style="color:var(--cinza);display:block;margin-top:8px">O assistente só responde com o que está publicado no site. Se não sabe, chama um humano — nunca inventa.</small></div></div>`},
+
+ aparencia(){return `<div class="topo"><div><h2>Aparência</h2><div class="sub">As cores do site saem daqui — mexa e veja o resultado na hora</div></div><button class="bt" onclick="toast('No sistema real: rascunho → link de pré-visualização → publicar. Nada muda no site sem você confirmar.')">Publicar alterações</button></div>
+  <div class="tokens">
+   <div class="token"><input type="color" id="tk-p" value="#0085BD" oninput="pintar()"><label>Cor principal</label></div>
+   <div class="token"><input type="color" id="tk-s" value="#043E79" oninput="pintar()"><label>Cor escura</label></div>
+   <div class="token"><input type="color" id="tk-a" value="#32EDFF" oninput="pintar()"><label>Cor de acento</label></div>
+  </div>
+  <div class="mini-site" id="ms">
+   <div class="ms-top" id="ms-top">Gazeta da Mooca</div>
+   <div class="ms-nav" id="ms-nav"><span>Capa</span><span>Últimas</span><span>Agenda</span><span>Guia</span><span id="ms-cta">Anuncie</span></div>
+   <div class="ms-body"><span class="ms-chapeu" id="ms-chapeu">Mobilidade</span><h5>Obra na Rua da Mooca muda o trânsito por 90 dias</h5><p>Prévia de como o site fica com as cores escolhidas. No sistema real há 5 modelos de layout — e todos passam por checagem automática de contraste e legibilidade.</p><span class="bt mini" id="ms-bt" style="margin-top:8px">Chamar no WhatsApp</span></div>
+  </div>
+  <div class="aviso-ia" style="margin-top:14px">ℹ Também dá para trocar o modelo do site inteiro (tradicional, revista, feed…), agendar tema especial — Natal, São Vito, luto — e voltar atrás com um clique. Combinações ilegíveis são corrigidas automaticamente.</div>`}
+};
+
+/* ===================== AÇÕES ===================== */
+function aprovarMat(id){const m=S.materias.find(x=>x.id===id);m.st="publicada";m.rev="João Batista";toast('"'+m.t.slice(0,40)+'…" publicada — revisão assinada por você');router()}
+function modAcao(id,acao){S.mod=S.mod.filter(m=>m.id!==id);document.getElementById("bd-mod").textContent=S.mod.length||"";if(!S.mod.length)document.getElementById("bd-mod").classList.add("hide");toast("Classificado "+acao+(acao==="aprovado"?" — já está no ar e o anunciante foi avisado":" — o anunciante recebe o motivo e o reembolso automático"));router()}
+function evAcao(id,acao){S.eventosMod=S.eventosMod.filter(e=>e.id!==id);document.getElementById("bd-ag").textContent=S.eventosMod.length||"";if(!S.eventosMod.length)document.getElementById("bd-ag").classList.add("hide");toast("Evento "+acao+(acao==="aprovado"?" — entrou na agenda do site":""));router()}
+function segundaVia(i){toast("2ª via enviada no WhatsApp de "+S.cobrancas[i].a+", com Pix copia-e-cola")}
+function espClick(i){const p=S.espelho[i];if(p.st==="anuncio"){toast("Página "+p.n+" é anúncio vendido — a arte já foi aprovada pelo anunciante");return}p.st=CICLO[p.st];router()}
+function fecharEd(falta,prod){if(falta||prod){toast("Ainda não dá: "+(falta?falta+" página(s) vazia(s)":"")+(falta&&prod?" e ":"")+(prod?prod+" em produção":"")+". O checklist impede fechar com pendência.");return}
+ toast("PDF em geração! O sistema confere cores, medidas e QR Codes e avisa quando estiver pronto para a gráfica.")}
+function gerarIA(){const p=document.getElementById("ia-prompt").value.trim();if(!p){toast("Descreva o que aconteceu primeiro");return}
+ document.getElementById("ia-out").innerHTML=`<div class="cx"><h4>Rascunho montado pelo assistente <span class="tag t-al">aguardando sua revisão</span></h4><div class="pad">
+  <div class="campo"><label>Sugestões de título</label>
+   <div class="bloco-ia"><b>Vazamento fecha trecho da Rua Taquari e conserto vai até sexta</b><div class="origem">origem: seu relato</div></div>
+   <div class="bloco-ia">Sabesp trabalha em vazamento na Taquari; trânsito segue lento<div class="origem">origem: seu relato</div></div></div>
+  <div class="campo"><label>Lide</label><div class="bloco-ia">Um vazamento de água na Rua Taquari, na altura do número 800, deixa o trânsito lento no trecho desde a noite de ontem. Equipes da Sabesp estiveram no local pela manhã e a previsão de conserto é até sexta-feira.<div class="origem">origem: seu relato · confiança alta</div></div></div>
+  <div class="apurar"><b>⚠ Precisa apurar antes de publicar</b>• Horário exato do início do vazamento — confirmar com moradores<br>• Posição oficial da Sabesp — protocolo 195, imprensa<br>• Há imóveis sem água no trecho? Nenhuma fonte confirma</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="bt" onclick="salvarIA()">Salvar como rascunho</button><button class="bt ghost" onclick="toast('No editor real, o texto abre em blocos para editar, com badge de origem em cada trecho')">Abrir no editor</button></div>
+  <small style="color:var(--cinza);display:block;margin-top:10px">Este texto fica marcado como "com apoio de IA" para sempre, e só publica depois que um jornalista revisar e assinar.</small>
+ </div></div>`;window.scrollTo({top:200,behavior:"smooth"})}
+function salvarIA(){S.materias.unshift({id:Date.now(),t:"Vazamento fecha trecho da Rua Taquari e conserto vai até sexta",cat:"Serviços",autor:"João Batista",st:"revisao",ia:true,rev:null});toast("Rascunho salvo — está na lista de matérias, em revisão");location.hash="#/materias"}
+function waSend(){const inp=document.getElementById("wa-msg"),v=inp.value.trim();if(!v)return;const chat=document.getElementById("wa-chat");
+ chat.insertAdjacentHTML("beforeend",`<div class="bl">${v.replace(/</g,"&lt;")}<small>agora</small></div>`);inp.value="";
+ const low=v.toLowerCase();let resp;
+ if(low.includes("juventus")||low.includes("jogo"))resp="⚽ Tem sim: <b>Juventus x Barcelona Capela</b>, sábado às 15h, na Rua Javari. Ingressos antecipados na secretaria do clube. Quer um lembrete um dia antes?";
+ else if(low.includes("pizza")||low.includes("cantina")||low.includes("comer"))resp="🍝 No nosso guia: <b>Cantina D'Irene</b> (R. Padre Raposo, 433), <b>Don Carlini</b> (R. Dona Ana Neri, 265) e a <b>Pizzaria Moinhos de Vento</b> (R. Juvenal Parada, 94). Quer o WhatsApp de alguma?";
+ else if(low.includes("anunciar")||low.includes("anúncio")||low.includes("anuncio"))resp="Que bom! 🎉 A ficha simples no Guia é grátis, e o destaque sai a partir de R$ 39/mês. Posso te mandar o link para contratar direto, ou pedir para o comercial te ligar. O que prefere?";
+ else if(low.includes("farmácia")||low.includes("farmacia"))resp="💊 A mais próxima no guia é a <b>Drogaria Sinete</b>, Rua da Mooca, 2287. A escala de plantão desta semana está na nossa página de utilidade pública.";
+ else if(low.includes("buraco")||low.includes("lixo")||low.includes("poste"))resp="Obrigado por avisar! 📸 Me manda uma foto e o endereço? Encaminho para a redação apurar — e você recebe retorno por aqui.";
+ else resp="Boa pergunta! Não achei essa informação no site da Gazeta — vou encaminhar para a redação e alguém te responde por aqui. Enquanto isso, posso ajudar com eventos, comércio do bairro ou notícias publicadas. 😊";
+ setTimeout(()=>{chat.insertAdjacentHTML("beforeend",`<div class="bl dir">${resp}<small>agora · assistente</small></div>`);chat.scrollTop=chat.scrollHeight},600);
+ chat.scrollTop=chat.scrollHeight}
+function pintar(){const p=document.getElementById("tk-p").value,s=document.getElementById("tk-s").value,a=document.getElementById("tk-a").value;
+ document.getElementById("ms-top").style.background=s;document.getElementById("ms-nav").style.background=p;
+ document.getElementById("ms-cta").style.background=a;document.getElementById("ms-cta").style.color=s;
+ document.getElementById("ms-chapeu").style.color=p;document.getElementById("ms-bt").style.background=p}
+
+/* ===================== ROUTER ===================== */
+function router(){if(document.getElementById("tela-app").classList.contains("hide"))return;
+ const h=location.hash.replace(/^#\/?/,"")||"dash";const [r,arg]=h.split("/");
+ const fn=views[r]||views.dash;app.innerHTML=fn(arg);
+ document.querySelectorAll(".lat a[data-r]").forEach(a=>a.classList.toggle("on",a.dataset.r===(views[r]?r:"dash")));
+ const de=document.getElementById("dash-esp");if(de){const done=S.espelho.filter(p=>p.st==="pronta"||p.st==="anuncio").length;de.textContent=done+" de 16 páginas prontas"}
+ if(r==="aparencia")pintar();
+ window.scrollTo(0,0)}
+window.addEventListener("hashchange",router);
+</script>
+</body>
+</html>
