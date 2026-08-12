@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta Comercial · A Gazeta da Mooca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --concreto:#E8E7E1; --papel:#F7F5F0; --papel-alt:#EFEDE6;
+  --grena:#5A1B23; --grena-esc:#3B1218; --tijolo:#A63A22; --ocre:#C9922B;
+  --verdete:#2F4A42; --tinta:#1A1613; --fumo:#6B655D;
+  --linha:#D3D0C7; --linha-forte:#A9A49A;
+  --display:'Archivo',system-ui,sans-serif;
+  --corpo:'Newsreader',Georgia,serif;
+  --dado:'IBM Plex Mono',ui-monospace,monospace;
+  --max:1140px; --gut:clamp(18px,5vw,52px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--concreto);color:var(--tinta);font-family:var(--corpo);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.06;letter-spacing:-.02em}
+p{max-width:68ch}
+section{padding:clamp(48px,8vw,88px) 0}
+
+/* cabeçalho da proposta */
+.capa{background:var(--grena-esc);color:var(--papel);padding:clamp(26px,5vw,40px) 0 clamp(44px,8vw,76px);position:relative;overflow:hidden}
+.capa::after{content:"";position:absolute;inset:auto 0 0 0;height:6px;background:repeating-linear-gradient(90deg,var(--tijolo) 0 34px,var(--ocre) 34px 40px)}
+.selo{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:baseline;border-bottom:1px solid rgba(247,245,240,.22);padding-bottom:13px;margin-bottom:clamp(32px,6vw,58px)}
+.selo span{font-family:var(--dado);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(247,245,240,.7)}
+.selo b{color:var(--ocre);font-weight:600}
+.capa h1{font-size:clamp(34px,7.5vw,74px);text-transform:uppercase;line-height:.95}
+.capa h1 em{display:block;font-style:normal;color:var(--tijolo)}
+.chamada{font-size:clamp(18px,2.3vw,25px);line-height:1.42;color:rgba(247,245,240,.87);margin-top:24px;max-width:36ch}
+.chamada b{color:var(--ocre);font-weight:600}
+.faixa{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:rgba(247,245,240,.18);margin-top:clamp(32px,5vw,52px)}
+.faixa div{background:var(--grena-esc);padding:17px 19px}
+.faixa dt{font-family:var(--dado);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(247,245,240,.58);margin-bottom:6px}
+.faixa dd{font-family:var(--display);font-weight:700;font-size:clamp(18px,2.2vw,24px);color:var(--papel)}
+
+/* cabeçalhos de seção */
+.cab{margin-bottom:clamp(28px,4.5vw,46px)}
+.cab .marca{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.cab .marca i{font-style:normal;font-family:var(--dado);font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--papel);background:var(--grena);padding:4px 9px}
+.cab .marca hr{flex:1;border:0;border-top:1px solid var(--linha-forte)}
+.cab h2{font-size:clamp(26px,4.3vw,42px);max-width:22ch}
+.cab .apoio{margin-top:14px;color:var(--fumo);font-size:18.5px}
+
+/* ============ MOCKUP: moldura de navegador ============ */
+.tela{background:var(--papel);border:1px solid var(--linha-forte);box-shadow:0 18px 40px rgba(58,18,24,.14)}
+.barra{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#DEDBD3;border-bottom:1px solid var(--linha-forte)}
+.bolas{display:flex;gap:6px}
+.bolas i{width:10px;height:10px;border-radius:50%;background:var(--linha-forte);display:block}
+.url{flex:1;background:var(--papel);border:1px solid var(--linha);padding:5px 12px;font-family:var(--dado);font-size:11.5px;color:var(--fumo);letter-spacing:.02em}
+.url b{color:var(--verdete);font-weight:500}
+.viewport{overflow-x:auto}
+.viewport>.pagina{min-width:840px}
+.dica-rolar{font-family:var(--dado);font-size:11px;color:var(--fumo);letter-spacing:.08em;text-transform:uppercase;margin-top:10px;text-align:right}
+@media(min-width:960px){.dica-rolar{display:none}}
+
+/* marcadores numerados */
+.pin{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:var(--tijolo);color:#fff;font-family:var(--dado);font-size:10.5px;font-weight:600;vertical-align:middle;flex:none}
+.legenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:20px 30px;margin-top:32px}
+.legenda li{list-style:none;display:flex;gap:12px;align-items:flex-start}
+.legenda b{display:block;font-family:var(--display);font-size:16px;font-weight:700;margin-bottom:3px}
+.legenda p{font-size:16px;color:var(--fumo);line-height:1.45}
+
+/* ============ SITE PÚBLICO (dentro do mockup) ============ */
+.jn{font-family:'Newsreader',Georgia,serif;color:#161310;background:#FBFAF7}
+.jn-topo{background:#7C1E28;color:#FBFAF7;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.jn-marca{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;text-transform:uppercase;line-height:1}
+.jn-marca small{display:block;font-family:var(--dado);font-size:9px;font-weight:400;letter-spacing:.2em;color:#E8B96A;margin-top:4px}
+.jn-info{font-family:var(--dado);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:rgba(251,250,247,.72);text-align:right}
+.jn-nav{background:#5E1620;display:flex;gap:0;flex-wrap:wrap;padding:0 12px}
+.jn-nav a{color:rgba(251,250,247,.86);font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:9px 11px;text-decoration:none}
+.jn-nav a.on{background:#E8B96A;color:#3B1218}
+.jn-corpo{display:grid;grid-template-columns:1fr 260px;gap:26px;padding:24px 22px}
+.jn-foto{background:linear-gradient(135deg,#8C6E52 0%,#B79877 38%,#6E7A6A 100%);position:relative}
+.jn-foto::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.05) 0 3px,transparent 3px 6px)}
+.jn-cred{font-family:var(--dado);font-size:8.5px;color:#8A857C;letter-spacing:.06em;margin-top:4px;text-transform:uppercase}
+.jn-chapeu{font-family:var(--dado);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A63A22;margin-bottom:6px}
+.jn-manchete{font-family:var(--display);font-weight:800;font-size:32px;line-height:1.02;letter-spacing:-.025em;margin-bottom:9px}
+.jn-linhafina{font-size:15px;color:#4A453E;line-height:1.45;max-width:none}
+.jn-assina{font-family:var(--dado);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#8A857C;margin-top:9px;padding-top:8px;border-top:1px solid #E0DCD3}
+.jn-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px;padding-top:20px;border-top:2px solid #161310}
+.jn-card h4{font-family:var(--display);font-size:15px;font-weight:700;line-height:1.15;margin:8px 0 5px;letter-spacing:-.01em}
+.jn-card p{font-size:12.5px;color:#6E695F;line-height:1.4}
+.jn-lado>*+*{margin-top:20px}
+.jn-box{border:1px solid #DDD8CE;background:#fff;padding:14px}
+.jn-box h5{font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#7C1E28;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid #E4E0D6}
+.jn-anuncio{border:1px dashed #C0A46A;background:#FDF6E7;padding:15px 12px;text-align:center}
+.jn-anuncio .rot{font-family:var(--dado);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#A08442;margin-bottom:9px}
+.jn-anuncio .nm{font-family:var(--display);font-weight:800;font-size:17px;color:#7C1E28;line-height:1.1}
+.jn-anuncio .ds{font-size:12px;color:#6E695F;margin-top:5px;line-height:1.35}
+.jn-anuncio .zap{display:inline-block;margin-top:10px;background:#2F4A42;color:#fff;font-family:var(--display);font-size:10.5px;font-weight:600;padding:5px 11px;letter-spacing:.03em}
+.jn-ag li{list-style:none;display:flex;gap:9px;padding:7px 0;border-bottom:1px dotted #DDD8CE;font-size:12.5px;line-height:1.3}
+.jn-ag li:last-child{border:0}
+.jn-ag .dt{font-family:var(--dado);font-size:9.5px;font-weight:600;color:#A63A22;background:#F6EDE6;padding:3px 5px;height:fit-content;letter-spacing:.03em;flex:none}
+.jn-nl{background:#161310;color:#FBFAF7;padding:15px 13px}
+.jn-nl h5{font-family:var(--display);font-size:14px;font-weight:700;color:#E8B96A;margin-bottom:6px;letter-spacing:-.01em}
+.jn-nl p{font-size:12px;color:rgba(251,250,247,.72);line-height:1.4;margin-bottom:10px}
+.jn-nl .campo{background:#fff;color:#8A857C;font-family:var(--dado);font-size:10px;padding:7px 9px;margin-bottom:6px}
+.jn-nl .bt{background:#E8B96A;color:#3B1218;font-family:var(--display);font-size:11px;font-weight:700;text-align:center;padding:8px;letter-spacing:.04em;text-transform:uppercase}
+.jn-cls{background:#F1EEE7;border-top:2px solid #161310;padding:20px 22px}
+.jn-cls-cab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.jn-cls-cab h3{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.02em}
+.jn-cls-cab span{font-family:var(--dado);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:#A63A22}
+.jn-cls-grade{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.jn-mini{background:#fff;border:1px solid #DDD8CE;padding:11px}
+.jn-mini .cat{font-family:var(--dado);font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:#8A857C;margin-bottom:5px}
+.jn-mini h6{font-family:var(--display);font-size:13px;font-weight:700;line-height:1.15;margin-bottom:4px}
+.jn-mini p{font-size:11.5px;color:#6E695F;line-height:1.35}
+.jn-mini .qr{width:34px;height:34px;margin-top:9px;background:
+  linear-gradient(90deg,#161310 20%,transparent 20% 40%,#161310 40% 55%,transparent 55% 70%,#161310 70%),
+  linear-gradient(0deg,#161310 15%,transparent 15% 35%,#161310 35% 50%,transparent 50% 72%,#161310 72%);
+  background-blend-mode:multiply;border:2px solid #161310}
+.jn-rod{background:#3B1218;color:rgba(251,250,247,.6);font-family:var(--dado);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ============ PAINEL ADMIN (dentro do mockup) ============ */
+.ad{display:grid;grid-template-columns:186px 1fr;background:#F4F3EF;font-family:var(--display);color:#1A1613}
+.ad-lat{background:#22201C;padding:16px 0}
+.ad-lat .lg{color:#fff;font-size:14px;font-weight:800;padding:0 16px 14px;letter-spacing:-.01em;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:12px}
+.ad-lat .lg small{display:block;font-family:var(--dado);font-size:8px;font-weight:400;letter-spacing:.16em;color:#C9922B;margin-top:4px}
+.ad-lat a{display:flex;align-items:center;gap:9px;color:rgba(255,255,255,.62);font-size:12.5px;font-weight:500;padding:8px 16px;text-decoration:none}
+.ad-lat a.on{background:#A63A22;color:#fff;font-weight:600}
+.ad-lat a i{font-style:normal;width:14px;text-align:center;opacity:.8;font-size:12px}
+.ad-lat .div{font-family:var(--dado);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.32);padding:14px 16px 6px}
+.ad-main{padding:18px 20px}
+.ad-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.ad-topo h3{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.ad-topo .sub{font-family:var(--corpo);font-size:13px;color:#6E695F;margin-top:3px}
+.ad-bt{background:#A63A22;color:#fff;font-size:11.5px;font-weight:600;padding:8px 14px;letter-spacing:.02em}
+.ad-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:18px}
+.ad-kpi div{background:#fff;border:1px solid #E0DCD3;padding:12px 13px;border-left:3px solid #2F4A42}
+.ad-kpi div.al{border-left-color:#C9922B}
+.ad-kpi div.rd{border-left-color:#A63A22}
+.ad-kpi dt{font-family:var(--dado);font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;color:#8A857C;margin-bottom:6px}
+.ad-kpi dd{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.ad-kpi dd span{display:block;font-family:var(--corpo);font-size:11.5px;font-weight:400;color:#6E695F;margin-top:3px;letter-spacing:0}
+.ad-cols{display:grid;grid-template-columns:1.55fr 1fr;gap:14px}
+.ad-cx{background:#fff;border:1px solid #E0DCD3}
+.ad-cx h4{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:11px 13px;border-bottom:1px solid #E0DCD3;color:#22201C}
+.ad-tb{width:100%;border-collapse:collapse;font-size:12px}
+.ad-tb th{font-family:var(--dado);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A857C;text-align:left;padding:8px 13px;background:#FAF9F6;font-weight:500}
+.ad-tb td{padding:9px 13px;border-top:1px solid #EFEDE7}
+.ad-tb .vl{font-family:var(--dado);font-size:11.5px;font-weight:500}
+.tag{display:inline-block;font-family:var(--dado);font-size:8.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 6px}
+.t-ok{background:#E4EDE8;color:#2F4A42}
+.t-al{background:#FAF0DA;color:#8A6512}
+.t-er{background:#F7E4DF;color:#A63A22}
+.ad-li{list-style:none}
+.ad-li li{padding:10px 13px;border-top:1px solid #EFEDE7;font-size:12px;display:flex;justify-content:space-between;gap:9px;align-items:center}
+.ad-li li:first-child{border-top:0}
+.ad-li b{font-weight:600;display:block;font-size:12.5px}
+.ad-li small{font-family:var(--dado);font-size:9.5px;color:#8A857C;letter-spacing:.03em}
+
+/* ============ TUTORIAL ============ */
+.passo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,4vw,48px);align-items:center;padding:clamp(30px,5vw,52px) 0;border-top:1px solid var(--linha-forte)}
+.passo:nth-child(even) .passo-txt{order:2}
+.passo-txt .cont{font-family:var(--dado);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--tijolo);margin-bottom:11px}
+.passo-txt h3{font-size:clamp(21px,2.7vw,28px);margin-bottom:13px}
+.passo-txt p{font-size:17px;color:var(--fumo);margin-bottom:13px}
+.passo-txt ul{list-style:none}
+.passo-txt li{position:relative;padding-left:21px;font-size:16.5px;margin-bottom:8px;line-height:1.42}
+.passo-txt li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;background:var(--verdete)}
+@media(max-width:760px){.passo{grid-template-columns:1fr}.passo:nth-child(even) .passo-txt{order:0}}
+
+.demo{background:var(--papel);border:1px solid var(--linha-forte);box-shadow:0 10px 24px rgba(58,18,24,.1);overflow:hidden}
+.demo-cab{background:#22201C;color:#fff;font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:8px 13px}
+.demo-corpo{padding:15px;font-family:var(--display)}
+
+/* editor */
+.ed-campo{background:#fff;border:1px solid #DDD8CE;padding:9px 11px;font-size:13px;margin-bottom:9px;color:#22201C}
+.ed-campo span{font-family:var(--dado);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:#8A857C;display:block;margin-bottom:4px}
+.ed-ia{background:#3B1218;color:#fff;padding:12px;margin-bottom:9px}
+.ed-ia .tit{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#E8B96A;margin-bottom:7px}
+.ed-ia .txt{font-family:var(--corpo);font-size:13px;color:rgba(255,255,255,.86);line-height:1.4;font-style:italic}
+.ed-bt{display:inline-block;background:#C9922B;color:#3B1218;font-size:11px;font-weight:700;padding:7px 12px;letter-spacing:.04em;text-transform:uppercase;margin-top:9px}
+.ed-res{background:#fff;border-left:3px solid #2F4A42;padding:10px 12px;font-family:var(--corpo);font-size:13px;line-height:1.45;color:#4A453E}
+.ed-res b{font-family:var(--display);font-size:14px;display:block;margin-bottom:5px;color:#22201C}
+
+/* whatsapp */
+.wa{background:#E7E0D6;padding:14px}
+.bl{max-width:80%;padding:9px 12px;font-family:var(--corpo);font-size:13.5px;line-height:1.42;margin-bottom:9px;position:relative}
+.bl-e{background:#fff;border-radius:0 8px 8px 8px}
+.bl-d{background:#D6E6D3;border-radius:8px 0 8px 8px;margin-left:auto}
+.bl small{display:block;font-family:var(--dado);font-size:8.5px;color:#8A857C;margin-top:5px;letter-spacing:.04em}
+.bl .lk{color:#2F4A42;font-weight:600;text-decoration:underline}
+
+/* régua */
+.rg li{list-style:none;display:grid;grid-template-columns:58px 1fr;gap:11px;padding:9px 0;border-bottom:1px dotted #DDD8CE;align-items:start}
+.rg li:last-child{border:0}
+.rg .dia{font-family:var(--dado);font-size:10px;font-weight:600;letter-spacing:.05em;color:#fff;background:#8A857C;padding:3px 5px;text-align:center}
+.rg li.a1 .dia{background:#2F4A42}
+.rg li.a2 .dia{background:#C9922B}
+.rg li.a3 .dia{background:#A63A22}
+.rg b{font-size:13px;font-weight:700;display:block;margin-bottom:2px}
+.rg span{font-family:var(--corpo);font-size:12.5px;color:#6E695F;line-height:1.35}
+
+/* espelho */
+.esp{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.esp div{aspect-ratio:3/4;border:1px solid #C7C2B8;background:#fff;padding:6px;font-family:var(--dado);font-size:8px;letter-spacing:.05em;color:#8A857C;display:flex;flex-direction:column;justify-content:space-between}
+.esp div b{font-family:var(--display);font-size:14px;color:#C7C2B8;font-weight:800}
+.esp .ok{background:#E4EDE8;border-color:#2F4A42}
+.esp .ok b{color:#2F4A42}
+.esp .an{background:#FAF0DA;border-color:#C9922B}
+.esp .an b{color:#C9922B}
+.esp .vz{background:#F7E4DF;border-color:#A63A22}
+.esp .vz b{color:#A63A22}
+
+/* ============ GUIA DA MOOCA ============ */
+.gu{background:#FBFAF7;font-family:'Newsreader',Georgia,serif;color:#161310}
+.gu-topo{background:#5E1620;color:#FBFAF7;padding:15px 20px}
+.gu-topo h3{font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px}
+.gu-topo p{font-size:12.5px;color:rgba(251,250,247,.72)}
+.gu-busca{background:#fff;color:#8A857C;font-family:var(--dado);font-size:11.5px;padding:9px 12px;margin-top:11px;display:flex;justify-content:space-between}
+.gu-busca b{color:#5E1620;font-weight:600}
+.gu-chips{display:flex;gap:6px;flex-wrap:wrap;padding:13px 20px 0}
+.gu-chips span{font-family:var(--display);font-size:10.5px;font-weight:600;letter-spacing:.03em;padding:5px 9px;border:1px solid #DDD8CE;color:#6E695F;background:#fff}
+.gu-chips span.on{background:#161310;color:#fff;border-color:#161310}
+.gu-dest{margin:14px 20px 0;background:#FDF6E7;border:1px solid #C0A46A;padding:14px;display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center}
+.gu-logo{aspect-ratio:1;background:linear-gradient(135deg,#5E1620,#A63A22);color:#fff;font-family:var(--display);font-weight:800;font-size:24px;display:flex;align-items:center;justify-content:center;letter-spacing:-.03em}
+.gu-dest h4{font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px}
+.gu-dest .end{font-size:12.5px;color:#6E695F;line-height:1.35}
+.gu-sel{display:inline-block;font-family:var(--dado);font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 6px;background:#C9922B;color:#3B1218;margin-bottom:5px}
+.gu-sel.vf{background:#2F4A42;color:#fff}
+.gu-zap{background:#2F4A42;color:#fff;font-family:var(--display);font-size:11px;font-weight:600;padding:8px 13px;text-align:center;white-space:nowrap}
+.gu-grade{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;padding:13px 20px 20px}
+.gu-card{background:#fff;border:1px solid #DDD8CE;padding:11px}
+.gu-card .cat{font-family:var(--dado);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:#8A857C;margin-bottom:5px}
+.gu-card h5{font-family:var(--display);font-size:13.5px;font-weight:700;line-height:1.15;margin-bottom:4px}
+.gu-card p{font-size:11.5px;color:#6E695F;line-height:1.32}
+.gu-card .mini{display:inline-block;font-family:var(--dado);font-size:7.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 5px;margin-top:7px}
+.m-vf{background:#E4EDE8;color:#2F4A42}
+.m-ds{background:#FAF0DA;color:#8A6512}
+.m-gr{background:#EFEDE6;color:#8A857C}
+
+/* ============ CLASSIFICADOS ============ */
+.cl{background:#FBFAF7;font-family:'Newsreader',Georgia,serif;color:#161310}
+.cl-topo{background:#161310;color:#FBFAF7;padding:14px 20px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px}
+.cl-topo h3{font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:-.02em}
+.cl-topo .an{font-family:var(--display);font-size:11px;font-weight:600;background:#C9922B;color:#3B1218;padding:6px 11px}
+.cl-abas{display:flex;background:#22201C}
+.cl-abas span{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.04em;color:rgba(251,250,247,.6);padding:9px 16px}
+.cl-abas span.on{background:#FBFAF7;color:#161310}
+.cl-filtros{display:flex;gap:7px;flex-wrap:wrap;padding:13px 20px;background:#F1EEE7;border-bottom:1px solid #DDD8CE}
+.cl-filtros span{font-family:var(--dado);font-size:10px;letter-spacing:.05em;background:#fff;border:1px solid #DDD8CE;color:#6E695F;padding:5px 9px}
+.cl-lista{padding:14px 20px 20px}
+.cl-item{display:grid;grid-template-columns:104px 1fr auto;gap:14px;padding:12px 0;border-bottom:1px solid #E4E0D6;align-items:center}
+.cl-item:last-child{border:0}
+.cl-img{aspect-ratio:4/3;background:linear-gradient(135deg,#8C6E52 0%,#B79877 40%,#6E7A6A 100%);position:relative}
+.cl-img::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(0,0,0,.05) 0 3px,transparent 3px 6px)}
+.cl-img i{position:absolute;bottom:4px;right:4px;font-style:normal;font-family:var(--dado);font-size:7.5px;background:rgba(0,0,0,.6);color:#fff;padding:2px 4px;letter-spacing:.05em}
+.cl-item h5{font-family:var(--display);font-size:15px;font-weight:700;line-height:1.15;margin-bottom:4px;letter-spacing:-.01em}
+.cl-attr{font-family:var(--dado);font-size:10px;color:#6E695F;letter-spacing:.03em;margin-bottom:6px}
+.cl-vend{font-size:11.5px;color:#8A857C}
+.cl-vend b{color:#5E1620;font-weight:600;font-family:var(--display);font-size:12px}
+.cl-preco{font-family:var(--display);font-weight:800;font-size:19px;color:#5E1620;text-align:right;line-height:1.1;white-space:nowrap}
+.cl-preco small{display:block;font-family:var(--dado);font-size:9px;font-weight:500;color:#8A857C;margin-top:4px;letter-spacing:.05em}
+
+/* comparativo de frentes */
+.frentes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3.4vw,36px)}
+.frente{background:var(--papel);border-top:4px solid var(--verdete);padding:26px 24px}
+.frente.b{border-top-color:var(--tijolo)}
+.frente .et{font-family:var(--dado);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--fumo);margin-bottom:9px}
+.frente h3{font-size:22px;margin-bottom:11px}
+.frente>p{font-size:16.5px;color:var(--fumo);margin-bottom:16px}
+.frente table{width:100%;border-collapse:collapse;font-size:15px}
+.frente th{text-align:left;font-family:var(--dado);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fumo);font-weight:500;padding:7px 0;width:44%;vertical-align:top}
+.frente td{padding:7px 0;border-bottom:1px solid var(--linha);line-height:1.4}
+.frente tr:last-child td,.frente tr:last-child th{border:0}
+.tabela-preco{margin-top:16px;background:var(--papel-alt);padding:14px}
+.tabela-preco h4{font-family:var(--dado);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tijolo);margin-bottom:10px;font-weight:600}
+.tabela-preco dl{display:grid;grid-template-columns:1fr auto;gap:7px 12px;font-size:15px}
+.tabela-preco dt{color:var(--tinta)}
+.tabela-preco dd{font-family:var(--dado);font-size:13px;font-weight:600;color:var(--grena);text-align:right}
+.aviso-ex{font-family:var(--dado);font-size:11px;letter-spacing:.04em;color:var(--fumo);line-height:1.55;margin-top:22px;padding-top:14px;border-top:1px solid var(--linha-forte);max-width:none}
+
+/* ============ PACOTES ============ */
+.pcts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,2.6vw,26px);align-items:start}
+.pct{background:var(--papel);position:relative;box-shadow:5px 5px 0 var(--linha),10px 10px 0 rgba(90,27,35,.09);display:flex;flex-direction:column;height:100%}
+.pct .aba{position:absolute;top:-14px;left:20px;background:var(--grena);color:var(--papel);font-family:var(--dado);font-size:10.5px;font-weight:600;letter-spacing:.14em;padding:5px 12px;text-transform:uppercase}
+.pct.dest{box-shadow:5px 5px 0 var(--ocre),10px 10px 0 var(--tijolo)}
+.pct.dest .aba{background:var(--tijolo)}
+.pct .topo{padding:32px 24px 20px;border-bottom:1px solid var(--linha)}
+.rec{display:inline-block;margin-bottom:11px;background:var(--ocre);color:var(--grena-esc);font-family:var(--dado);font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;padding:4px 9px}
+.pct h3{font-size:25px;margin-bottom:7px;text-transform:uppercase}
+.pct .pq{font-size:15.5px;color:var(--fumo);line-height:1.45;min-height:4.4em}
+.vals{padding:20px 24px;background:var(--papel-alt);border-bottom:1px solid var(--linha)}
+.lp{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.lp+.lp{margin-top:13px;padding-top:13px;border-top:1px dotted var(--linha-forte)}
+.lp .rot{font-family:var(--dado);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fumo)}
+.lp .vl{font-family:var(--display);font-weight:800;font-size:27px;color:var(--grena);line-height:1;text-align:right}
+.lp .vl small{display:block;font-family:var(--dado);font-size:10px;font-weight:500;color:var(--fumo);margin-top:5px;letter-spacing:.05em}
+.itens{list-style:none;padding:22px 24px 28px;flex:1}
+.itens li{position:relative;padding-left:22px;font-size:16px;line-height:1.42;margin-bottom:10px}
+.itens li::before{content:"";position:absolute;left:0;top:.56em;width:8px;height:8px;background:var(--verdete)}
+.itens li.her{color:var(--fumo);font-style:italic}
+.itens li.her::before{background:var(--linha-forte)}
+.itens strong{font-weight:600}
+
+/* ============ PAGAMENTO ============ */
+.pgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:20px}
+.pg{background:var(--papel);border-top:4px solid var(--grena);padding:22px 21px;display:flex;flex-direction:column}
+.pg.melhor{border-top-color:var(--verdete)}
+.pg.flex{border-top-color:var(--ocre)}
+.pg .et{font-family:var(--dado);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--tijolo);margin-bottom:9px}
+.pg h3{font-size:19px;margin-bottom:10px}
+.pg .nm{font-family:var(--display);font-weight:800;font-size:29px;color:var(--grena);line-height:1.05;margin-bottom:9px}
+.pg .nm small{display:block;font-family:var(--corpo);font-weight:400;font-size:14px;color:var(--fumo);margin-top:5px}
+.pg p{font-size:15.5px;color:var(--fumo);line-height:1.45;flex:1}
+.pg .selo-ec{display:inline-block;margin-top:12px;font-family:var(--dado);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--verdete);color:#fff;padding:4px 8px;align-self:flex-start}
+
+/* blocos */
+.duas{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:clamp(20px,3.4vw,38px)}
+.bl2{background:var(--papel);padding:26px 24px;border-top:4px solid var(--verdete)}
+.bl2.fora{border-top-color:var(--tijolo)}
+.bl2 h3{font-size:19px;margin-bottom:15px;text-transform:uppercase}
+.bl2 ul{list-style:none}
+.bl2 li{padding-left:21px;position:relative;font-size:16px;margin-bottom:9px;line-height:1.42}
+.bl2 li::before{content:"+";position:absolute;left:0;font-family:var(--dado);color:var(--verdete);font-weight:600}
+.bl2.fora li::before{content:"–";color:var(--tijolo)}
+.bl2 .nt{margin-top:14px;font-size:15px;color:var(--fumo);font-style:italic}
+
+.gars{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:24px}
+.gar{border-left:3px solid var(--tinta);padding-left:17px}
+.gar h3{font-size:15.5px;text-transform:uppercase;letter-spacing:.03em;margin-bottom:7px}
+.gar p{font-size:15.5px;color:var(--fumo)}
+
+/* fim */
+.fim{background:var(--tinta);color:var(--papel);padding:clamp(50px,8vw,88px) 0}
+.fim h2{font-size:clamp(26px,4.5vw,44px);max-width:19ch;margin-bottom:20px}
+.fim>.wrap>p{color:rgba(247,245,240,.78);font-size:18.5px;margin-bottom:32px}
+.passos{list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:22px;margin-bottom:40px}
+.passos li{counter-increment:p;padding-top:15px;border-top:2px solid var(--tijolo);font-size:16px;color:rgba(247,245,240,.87)}
+.passos li::before{content:counter(p,decimal-leading-zero);display:block;font-family:var(--dado);font-size:11.5px;color:var(--ocre);letter-spacing:.1em;margin-bottom:7px}
+.assina{border-top:1px solid rgba(247,245,240,.22);padding-top:24px;display:flex;flex-wrap:wrap;gap:22px 50px;justify-content:space-between;align-items:flex-end}
+.assina .q{font-family:var(--display);font-weight:700;font-size:19px}
+.assina .q small{display:block;font-family:var(--dado);font-size:10.5px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,245,240,.58);margin-top:7px}
+.assina .v{font-family:var(--dado);font-size:11.5px;color:rgba(247,245,240,.52);text-align:right;line-height:1.7}
+
+.rev{opacity:0;transform:translateY(13px);transition:opacity .5s ease,transform .5s ease}
+.rev.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+
+@media print{
+  body{background:#fff;font-size:10.5pt}
+  .capa,.fim{background:#fff!important;color:#000!important}
+  .capa h1 em{color:#5A1B23!important}
+  .selo span,.chamada,.faixa dd,.faixa dt,.fim>.wrap>p,.passos li,.assina .q,.assina .v{color:#000!important}
+  .faixa div{background:#fff!important;border:1px solid #999}
+  section{padding:20px 0;break-inside:avoid}
+  .pct,.demo,.tela,.pg,.bl2,.gar,.passo{break-inside:avoid;box-shadow:none}
+  .rev{opacity:1;transform:none}
+  .viewport{overflow:visible}
+  .viewport>.pagina{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="wrap">
+    <div class="selo">
+      <span>Proposta comercial <b>Nº 001</b></span>
+      <span>Para <b>A Gazeta da Mooca</b></span>
+      <span>São Paulo, <b>agosto de 2026</b></span>
+      <span>Válida por <b>30 dias</b></span>
+    </div>
+    <h1>A Gazeta<br>da Mooca<em>na internet</em></h1>
+    <p class="chamada">Um site de verdade, os anúncios sendo <b>cobrados sozinhos</b> e o WhatsApp respondendo o leitor de madrugada. Nas páginas a seguir, você vê exatamente <b>como fica</b> — antes de decidir qualquer coisa.</p>
+    <dl class="faixa">
+      <div><dt>Você vê antes</dt><dd>O site pronto</dd></div>
+      <div><dt>Da assinatura à estreia</dt><dd>4 a 6 semanas</dd></div>
+      <div><dt>Implantação a partir de</dt><dd>R$ 3.500</dd></div>
+      <div><dt>Manutenção a partir de</dt><dd>R$ 290/mês</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ================= SITE PÚBLICO ================= -->
+<section>
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 1 · O QUE O LEITOR VÊ</i><hr></div>
+      <h2>O site da Gazeta</h2>
+      <p class="apoio">Esta é a página inicial. As cores saem da sua logo — se a logo é vermelha, o site fica vermelho. Você escolhe o modelo e muda quando quiser, sem chamar ninguém.</p>
+    </div>
+
+    <div class="tela rev">
+      <div class="barra">
+        <div class="bolas"><i></i><i></i><i></i></div>
+        <div class="url">🔒 <b>gazetadamooca.com.br</b></div>
+      </div>
+      <div class="viewport">
+      <div class="pagina jn">
+
+        <div class="jn-topo">
+          <div class="jn-marca">A Gazeta da Mooca<small>DESDE 1998 · O JORNAL DO BAIRRO</small></div>
+          <div class="jn-info">Terça, 11 de agosto de 2026<br>Edição nº 412 <span class="pin">1</span></div>
+        </div>
+
+        <nav class="jn-nav">
+          <a href="#" class="on">Capa</a><a href="#">Bairro</a><a href="#">Esportes</a>
+          <a href="#">Agenda</a><a href="#">Guia Comercial</a><a href="#">Classificados</a>
+          <a href="#">Obituário</a><a href="#">Anuncie aqui</a>
+        </nav>
+
+        <div class="jn-corpo">
+          <div>
+            <div class="jn-foto" style="height:186px"></div>
+            <div class="jn-cred">Foto: Arquivo / A Gazeta da Mooca</div>
+            <div style="margin-top:13px">
+              <div class="jn-chapeu">Mobilidade</div>
+              <h2 class="jn-manchete">Obra na Rua da Mooca muda o trânsito por 90 dias</h2>
+              <p class="jn-linhafina">Trecho entre a Javari e a Bresser terá mão única a partir de segunda. Comerciantes pedem sinalização e a subprefeitura promete reunião na quinta.</p>
+              <div class="jn-assina">Por Redação · há 2 horas · Atualizada às 14h20 <span class="pin">2</span></div>
+            </div>
+
+            <div class="jn-grade">
+              <div class="jn-card">
+                <div class="jn-foto" style="height:64px"></div>
+                <h4>Juventus vence e assume a liderança na Javari</h4>
+                <p>Tabela completa e artilharia atualizada na página de esportes.</p>
+              </div>
+              <div class="jn-card">
+                <div class="jn-foto" style="height:64px"></div>
+                <h4>Festa de São Vito abre inscrições para barracas</h4>
+                <p>Prazo vai até 30 de agosto; taxa reduzida para moradores.</p>
+              </div>
+              <div class="jn-card">
+                <div class="jn-foto" style="height:64px"></div>
+                <h4>Feira da Rua Javari muda de horário no inverno</h4>
+                <p>Nova grade começa neste sábado e vale até setembro.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="jn-lado">
+            <div class="jn-anuncio">
+              <div class="rot">Publicidade</div>
+              <div class="nm">Cantina do Zé</div>
+              <div class="ds">Massa fresca todo dia.<br>Rua Javari, 340</div>
+              <div class="zap">Chamar no WhatsApp</div>
+              <div style="margin-top:8px" class="pin">3</div>
+            </div>
+
+            <div class="jn-box">
+              <h5>Agenda da semana <span class="pin">4</span></h5>
+              <ul class="jn-ag">
+                <li><span class="dt">12<br>AGO</span><span>Missa e quermesse na Paróquia São Rafael</span></li>
+                <li><span class="dt">14<br>AGO</span><span>Feira de adoção na Praça da Mooca</span></li>
+                <li><span class="dt">16<br>AGO</span><span>Juventus x Nacional, 15h, Rua Javari</span></li>
+              </ul>
+            </div>
+
+            <div class="jn-nl">
+              <h5>Receba a Gazeta por e-mail <span class="pin">5</span></h5>
+              <p>As notícias do bairro toda manhã, de graça.</p>
+              <div class="campo">seu@email.com.br</div>
+              <div class="bt">Quero receber</div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="jn-cls">
+          <div class="jn-cls-cab">
+            <h3>Guia da Mooca</h3>
+            <span>312 estabelecimentos · Indicação de quem é do bairro <span class="pin">6</span></span>
+          </div>
+          <div class="jn-cls-grade">
+            <div class="jn-mini"><div class="cat">Beleza</div><h6>Barbearia Mr. Gump</h6><p>Rua do Oratório, 454</p><div class="qr"></div></div>
+            <div class="jn-mini"><div class="cat">Confeitaria</div><h6>Di Cunto</h6><p>Rua Borges de Figueiredo, 61</p><div class="qr"></div></div>
+            <div class="jn-mini"><div class="cat">Construção</div><h6>Casa da Mooca</h6><p>Rua do Oratório, 808</p><div class="qr"></div></div>
+            <div class="jn-mini"><div class="cat">Cantina</div><h6>Cantina D'Irene</h6><p>Rua Padre Raposo, 433</p><div class="qr"></div></div>
+          </div>
+        </div>
+
+        <div class="jn-rod">
+          <span>A Gazeta da Mooca · CNPJ 00.000.000/0001-00</span>
+          <span>Expediente · Correções · Privacidade · Fale conosco</span>
+        </div>
+      </div>
+      </div>
+    </div>
+    <p class="dica-rolar">← Arraste para o lado para ver a página inteira</p>
+
+    <ul class="legenda rev">
+      <li><span class="pin">1</span><div><b>Número da edição</b><p>O site conversa com o impresso. Cada edição ganha sua página, e o leitor acha a de qualquer semana.</p></div></li>
+      <li><span class="pin">2</span><div><b>Assinatura e horário</b><p>Quem escreveu, quando saiu e quando foi corrigido. É isso que faz o Google confiar no jornal.</p></div></li>
+      <li><span class="pin">3</span><div><b>Anúncio com botão de WhatsApp</b><p>O leitor aperta e cai direto na conversa do comerciante — com a mensagem já escrita dizendo que veio da Gazeta.</p></div></li>
+      <li><span class="pin">4</span><div><b>Agenda do bairro</b><p>Igreja, escola e clube mandam o evento por um formulário. Você só aprova.</p></div></li>
+      <li><span class="pin">5</span><div><b>Captura de e-mail</b><p>Cada leitor que se cadastra vira uma lista sua. A de notícias fica separada da de propaganda.</p></div></li>
+      <li><span class="pin">6</span><div><b>Guia do bairro com QR Code</b><p>O mesmo anúncio sai no site e no impresso. O QR mostra quantas pessoas leram de verdade.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= DUAS FRENTES ================= -->
+<section style="background:var(--papel-alt)">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 2 · ONDE ENTRA O DINHEIRO</i><hr></div>
+      <h2>Duas frentes de anúncio, não uma só</h2>
+      <p class="apoio">Misturar tudo em "classificados" é o que faz o jornal cobrar barato de quem podia pagar mais. São dois negócios diferentes, com preço e público diferentes.</p>
+    </div>
+
+    <div class="frentes rev">
+      <div class="frente">
+        <div class="et">Frente 1</div>
+        <h3>Guia da Mooca</h3>
+        <p>Indicação de produtos e serviços do bairro. Quem anuncia é o próprio comércio, e o anúncio fica no ar o ano inteiro.</p>
+        <table>
+          <tr><th>Quem paga</th><td>O comerciante da esquina</td></tr>
+          <tr><th>O que ele quer</th><td>Ser lembrado e achado</td></tr>
+          <tr><th>Duração</th><td>Permanente, renova todo mês</td></tr>
+          <tr><th>Ticket</th><td>Baixo, mas repete sempre</td></tr>
+          <tr><th>Onde aparece</th><td>Site, WhatsApp, impresso e busca do Google</td></tr>
+        </table>
+        <div class="tabela-preco">
+          <h4>Sugestão de tabela</h4>
+          <dl>
+            <dt>Ficha simples (nome, endereço, telefone)</dt><dd>grátis</dd>
+            <dt>Ficha verificada, com fotos e horário</dt><dd>R$ 39/mês</dd>
+            <dt>Destaque na categoria</dt><dd>R$ 99/mês</dd>
+            <dt>Exclusividade na categoria do bairro</dt><dd>R$ 249/mês</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="frente b">
+        <div class="et">Frente 2</div>
+        <h3>Classificados de imóveis e veículos</h3>
+        <p>Anúncio de coisa que se vende uma vez e some. Quem anuncia é imobiliária, loja de carros — ou o próprio morador.</p>
+        <table>
+          <tr><th>Quem paga</th><td>Imobiliária, revenda e particular</td></tr>
+          <tr><th>O que ele quer</th><td>Vender rápido um item específico</td></tr>
+          <tr><th>Duração</th><td>Até vender, ou 30 dias</td></tr>
+          <tr><th>Ticket</th><td>Alto no profissional, baixo no particular</td></tr>
+          <tr><th>Onde aparece</th><td>Página própria com filtros e fotos</td></tr>
+        </table>
+        <div class="tabela-preco">
+          <h4>Sugestão de tabela</h4>
+          <dl>
+            <dt>Particular — 30 dias, até 8 fotos</dt><dd>R$ 29</dd>
+            <dt>Particular com destaque no topo</dt><dd>R$ 59</dd>
+            <dt>Profissional — até 25 anúncios</dt><dd>R$ 249/mês</dd>
+            <dt>Profissional — até 100 anúncios</dt><dd>R$ 590/mês</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <p class="apoio rev" style="margin-top:clamp(30px,4.5vw,44px);max-width:70ch"><strong>O detalhe que faz diferença:</strong> a imobiliária e a revenda mandam o estoque uma vez e o site atualiza sozinho. Elas não vão digitar 60 imóveis à mão — e é justamente por isso que hoje não anunciam em jornal de bairro.</p>
+  </div>
+</section>
+
+<!-- ================= TELA DO GUIA ================= -->
+<section>
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>FRENTE 1 NA TELA</i><hr></div>
+      <h2>O Guia da Mooca</h2>
+      <p class="apoio">Uma lista viva do comércio do bairro. Quem paga aparece primeiro; quem não paga aparece do mesmo jeito — e isso é o que faz o guia ser confiável e, por isso, valer dinheiro.</p>
+    </div>
+
+    <div class="tela rev">
+      <div class="barra">
+        <div class="bolas"><i></i><i></i><i></i></div>
+        <div class="url">🔒 <b>gazetadamooca.com.br/guia</b></div>
+      </div>
+      <div class="viewport">
+      <div class="pagina gu">
+        <div class="gu-topo">
+          <h3>Guia da Mooca</h3>
+          <p>312 estabelecimentos do bairro, conferidos pela redação</p>
+          <div class="gu-busca"><span>O que você procura na Mooca?</span><b>Buscar</b></div>
+        </div>
+        <div class="gu-chips">
+          <span class="on">Todos</span><span>Alimentação</span><span>Beleza</span><span>Saúde</span>
+          <span>Serviços</span><span>Pet</span><span>Construção</span><span>Automotivo</span><span>Educação</span>
+        </div>
+
+        <div class="gu-dest">
+          <div class="gu-logo">MG</div>
+          <div>
+            <span class="gu-sel">Destaque da categoria</span>
+            <h4>Barbearia Mr. Gump Mooca</h4>
+            <p class="end">Rua do Oratório, 454 · Segunda a sábado, 10h às 20h<br>Corte, barba e cuidados masculinos</p>
+          </div>
+          <div class="gu-zap">Chamar no<br>WhatsApp</div>
+        </div>
+
+        <div class="gu-grade">
+          <div class="gu-card"><div class="cat">Confeitaria</div><h5>Di Cunto</h5><p>Rua Borges de Figueiredo, 61</p><span class="mini m-ds">Destaque</span></div>
+          <div class="gu-card"><div class="cat">Salão de beleza</div><h5>Studio 321</h5><p>Rua Visc. de Inhomerim, 321</p><span class="mini m-vf">Verificado</span></div>
+          <div class="gu-card"><div class="cat">Padaria</div><h5>Padaria Estoril</h5><p>Rua da Mooca, 2250</p><span class="mini m-vf">Verificado</span></div>
+          <div class="gu-card"><div class="cat">Cantina italiana</div><h5>Cantina D'Irene</h5><p>Rua Padre Raposo, 433</p><span class="mini m-vf">Verificado</span></div>
+          <div class="gu-card"><div class="cat">Material de construção</div><h5>Casa da Mooca</h5><p>Rua do Oratório, 808</p><span class="mini m-vf">Verificado</span></div>
+          <div class="gu-card"><div class="cat">Restaurante</div><h5>Don Carlini Ristorante</h5><p>Rua Dona Ana Neri, 265</p><span class="mini m-ds">Destaque</span></div>
+          <div class="gu-card"><div class="cat">Academia</div><h5>Acqua Fit Mooca</h5><p>Rua Itaqueri, 1200</p><span class="mini m-gr">Ficha simples</span></div>
+          <div class="gu-card"><div class="cat">Farmácia</div><h5>Drogaria Sinete</h5><p>Rua da Mooca, 2287</p><span class="mini m-gr">Ficha simples</span></div>
+          <div class="gu-card"><div class="cat">Pet shop</div><h5>Petz Mooca</h5><p>Av. Paes de Barros, 1654</p><span class="mini m-vf">Verificado</span></div>
+          <div class="gu-card"><div class="cat">Pizzaria</div><h5>Moinhos de Vento</h5><p>Rua Juvenal Parada, 94</p><span class="mini m-vf">Verificado</span></div>
+          <div class="gu-card"><div class="cat">Shopping</div><h5>Mooca Plaza Shopping</h5><p>Rua Cap. Pacheco e Chaves, 313</p><span class="mini m-ds">Destaque</span></div>
+          <div class="gu-card"><div class="cat">Clube</div><h5>Clube Atlético Juventus</h5><p>Rua Javari, 117</p><span class="mini m-gr">Ficha simples</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <p class="dica-rolar">← Arraste para o lado para ver a página inteira</p>
+
+    <ul class="legenda rev">
+      <li><span class="pin">A</span><div><b>A ficha simples é de graça</b><p>Assim o guia nasce cheio, mesmo antes de vender. Guia vazio ninguém consulta — e o que ninguém consulta ninguém patrocina.</p></div></li>
+      <li><span class="pin">B</span><div><b>O selo é o produto</b><p>Verificado, Destaque e Exclusivo. Comerciante entende selo muito melhor do que entende "impressão" ou "clique".</p></div></li>
+      <li><span class="pin">C</span><div><b>É o guia que alimenta o WhatsApp</b><p>Quando o leitor pergunta "preciso de um cabeleireiro", a resposta sai daqui — e quem paga aparece primeiro, sempre identificado como anúncio.</p></div></li>
+      <li><span class="pin">D</span><div><b>Cada ficha vira página no Google</b><p>Quem procura "padaria na Mooca" acha a ficha do guia. Isso traz visita para o site sem você fazer nada.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= TELA DOS CLASSIFICADOS ================= -->
+<section style="background:var(--papel-alt)">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>FRENTE 2 NA TELA</i><hr></div>
+      <h2>Classificados de imóveis e veículos</h2>
+      <p class="apoio">Página separada, com filtro e foto grande. É o produto de maior valor por anúncio — e o único que traz imobiliária e loja de carro para dentro do jornal.</p>
+    </div>
+
+    <div class="tela rev">
+      <div class="barra">
+        <div class="bolas"><i></i><i></i><i></i></div>
+        <div class="url">🔒 <b>gazetadamooca.com.br/classificados/imoveis</b></div>
+      </div>
+      <div class="viewport">
+      <div class="pagina cl">
+        <div class="cl-topo">
+          <h3>Classificados</h3>
+          <div class="an">Anunciar meu imóvel ou carro</div>
+        </div>
+        <div class="cl-abas"><span class="on">Imóveis · 184</span><span>Veículos · 97</span><span>Comercial · 22</span></div>
+        <div class="cl-filtros">
+          <span>Comprar ▾</span><span>Sobrado, apto, casa ▾</span><span>Mooca, Alto da Mooca ▾</span>
+          <span>2 a 3 dormitórios ▾</span><span>Até R$ 900 mil ▾</span><span>Com vaga ▾</span>
+        </div>
+        <div class="cl-lista">
+          <div class="cl-item">
+            <div class="cl-img"><i>8 fotos</i></div>
+            <div>
+              <h5>Sobrado reformado no Alto da Mooca, rua tranquila</h5>
+              <div class="cl-attr">3 DORM · 1 SUÍTE · 2 VAGAS · 180 m²</div>
+              <div class="cl-vend">Anunciado por <b>Castan Imóveis &amp; Arquitetura</b> · Rua da Mooca, 2879</div>
+            </div>
+            <div class="cl-preco">R$ 780.000<small>venda</small></div>
+          </div>
+          <div class="cl-item">
+            <div class="cl-img"><i>12 fotos</i></div>
+            <div>
+              <h5>Apartamento a 5 min. do metrô Bresser-Mooca</h5>
+              <div class="cl-attr">2 DORM · 1 VAGA · 62 m² · MOBILIADO</div>
+              <div class="cl-vend">Anunciado por <b>Picolomini Empreendimentos</b> · Rua Visc. de Inhomerim, 738</div>
+            </div>
+            <div class="cl-preco">R$ 2.400<small>por mês</small></div>
+          </div>
+          <div class="cl-item">
+            <div class="cl-img"><i>6 fotos</i></div>
+            <div>
+              <h5>Casa térrea no Parque da Mooca, com quintal</h5>
+              <div class="cl-attr">2 DORM · 2 VAGAS · 140 m² · TERRENO 250 m²</div>
+              <div class="cl-vend">Anunciado por <b>Bella Casa Imóveis</b> · Av. Paes de Barros, 2758</div>
+            </div>
+            <div class="cl-preco">R$ 620.000<small>venda</small></div>
+          </div>
+          <div class="cl-item">
+            <div class="cl-img"><i>5 fotos</i></div>
+            <div>
+              <h5>Apartamento próximo à Rua da Mooca, aceita financiamento</h5>
+              <div class="cl-attr">2 DORM · 1 VAGA · 58 m²</div>
+              <div class="cl-vend">Anunciado por <b>morador do bairro</b> · anúncio particular</div>
+            </div>
+            <div class="cl-preco">R$ 465.000<small>venda</small></div>
+          </div>
+          <div class="cl-item">
+            <div class="cl-img"><i>9 fotos</i></div>
+            <div>
+              <h5>Honda Civic EXL 2019, único dono, revisões em dia</h5>
+              <div class="cl-attr">62.000 KM · AUTOMÁTICO · FLEX · PRATA</div>
+              <div class="cl-vend">Anunciado por <b>Mooca Motors</b> · Rua Celso de Azevedo Marques, 120</div>
+            </div>
+            <div class="cl-preco">R$ 89.900<small>à vista</small></div>
+          </div>
+          <div class="cl-item">
+            <div class="cl-img"><i>14 fotos</i></div>
+            <div>
+              <h5>Fiat Argo Drive 1.3 2021, garantia de fábrica</h5>
+              <div class="cl-attr">38.500 KM · MANUAL · FLEX · BRANCO</div>
+              <div class="cl-vend">Anunciado por <b>X Car Multimarcas</b> · Rua da Mooca, 4000</div>
+            </div>
+            <div class="cl-preco">R$ 62.500<small>ou financiado</small></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <p class="dica-rolar">← Arraste para o lado para ver a página inteira</p>
+
+    <ul class="legenda rev">
+      <li><span class="pin">E</span><div><b>O estoque entra sozinho</b><p>A imobiliária manda a lista uma vez e o site atualiza todo dia. Sem isso, nenhuma delas anuncia — não vão digitar 60 imóveis à mão.</p></div></li>
+      <li><span class="pin">F</span><div><b>Particular e profissional convivem</b><p>O morador que vende o carro paga R$ 29 e traz movimento. A revenda paga R$ 249 por mês e traz receita.</p></div></li>
+      <li><span class="pin">G</span><div><b>Some sozinho quando vende</b><p>O anunciante marca "vendido" e o anúncio sai. Página cheia de imóvel já vendido acaba com a credibilidade da seção.</p></div></li>
+      <li><span class="pin">H</span><div><b>Vai junto para o impresso</b><p>Os anúncios da semana viram a página de classificados do jornal, montada automaticamente, com QR para ver as fotos.</p></div></li>
+    </ul>
+
+    <p class="aviso-ex rev">Os estabelecimentos citados nesta apresentação são negócios reais da Mooca, usados apenas como exemplo para você visualizar como as páginas ficam. Nenhum deles foi contatado e nenhum é anunciante. Na implantação, o guia é montado com os anunciantes reais da Gazeta.</p>
+  </div>
+</section>
+
+<!-- ================= PAINEL ADMIN ================= -->
+<section>
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 3 · O QUE SÓ VOCÊ VÊ</i><hr></div>
+      <h2>O painel de controle</h2>
+      <p class="apoio">Endereço separado, com senha. É daqui que você publica, cobra e acompanha o dinheiro — tudo numa tela só, sem planilha.</p>
+    </div>
+
+    <div class="tela rev">
+      <div class="barra">
+        <div class="bolas"><i></i><i></i><i></i></div>
+        <div class="url">🔒 <b>admin.gazetadamooca.com.br</b> · sessão de João Batista</div>
+      </div>
+      <div class="viewport">
+      <div class="pagina ad">
+        <nav class="ad-lat">
+          <div class="lg">Gazeta da Mooca<small>PAINEL</small></div>
+          <a href="#" class="on"><i>▣</i>Painel</a>
+          <div class="div">Jornal</div>
+          <a href="#"><i>✎</i>Matérias</a>
+          <a href="#"><i>◱</i>Edição impressa</a>
+          <a href="#"><i>◷</i>Agenda</a>
+          <a href="#"><i>⚑</i>Esportes</a>
+          <div class="div">Dinheiro</div>
+          <a href="#"><i>▤</i>Classificados</a>
+          <a href="#"><i>☺</i>Anunciantes</a>
+          <a href="#"><i>$</i>Cobranças</a>
+          <a href="#"><i>▦</i>Produtos e preços</a>
+          <div class="div">Leitores</div>
+          <a href="#"><i>✉</i>Newsletter</a>
+          <a href="#"><i>◉</i>WhatsApp</a>
+          <div class="div">Sistema</div>
+          <a href="#"><i>◈</i>Aparência</a>
+          <a href="#"><i>⚙</i>Configurações</a>
+        </nav>
+
+        <div class="ad-main">
+          <div class="ad-topo">
+            <div>
+              <h3>Bom dia, João</h3>
+              <div class="sub">Terça, 11 de agosto · 3 coisas pedem sua atenção hoje</div>
+            </div>
+            <div class="ad-bt">+ Nova matéria</div>
+          </div>
+
+          <dl class="ad-kpi">
+            <div><dt>Faturado em agosto</dt><dd>R$ 9.480<span>+18% sobre julho</span></dd></div>
+            <div><dt>Anunciantes ativos</dt><dd>47<span>3 novos este mês</span></dd></div>
+            <div class="al"><dt>A receber até dia 20</dt><dd>R$ 3.150<span>7 cobranças abertas</span></dd></div>
+            <div class="rd"><dt>Em atraso</dt><dd>R$ 640<span>2 anunciantes <span class="pin">7</span></span></dd></div>
+          </dl>
+
+          <div class="ad-cols">
+            <div class="ad-cx">
+              <h4>Cobranças recentes <span class="pin">8</span></h4>
+              <table class="ad-tb">
+                <thead><tr><th>Anunciante</th><th>Plano</th><th>Valor</th><th>Situação</th></tr></thead>
+                <tbody>
+                  <tr><td>Cantina do Zé</td><td>Box mensal</td><td class="vl">R$ 129</td><td><span class="tag t-ok">Pago via Pix</span></td></tr>
+                  <tr><td>Salão Dona Rita</td><td>Classificado</td><td class="vl">R$ 49</td><td><span class="tag t-ok">Pago</span></td></tr>
+                  <tr><td>Imobiliária Bresser</td><td>Capa do site</td><td class="vl">R$ 690</td><td><span class="tag t-al">Vence em 3 dias</span></td></tr>
+                  <tr><td>Auto Peças Javari</td><td>Meia página</td><td class="vl">R$ 380</td><td><span class="tag t-er">Atrasado 6 dias</span></td></tr>
+                  <tr><td>Padaria São Vito</td><td>Guia comercial</td><td class="vl">R$ 260</td><td><span class="tag t-er">Atrasado 2 dias</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ad-cx">
+              <h4>Precisa de você <span class="pin">9</span></h4>
+              <ul class="ad-li">
+                <li><div><b>4 classificados aguardando</b><small>Enviados pelo site ontem</small></div><span class="tag t-al">Aprovar</span></li>
+                <li><div><b>2 eventos submetidos</b><small>Paróquia e escola municipal</small></div><span class="tag t-al">Revisar</span></li>
+                <li><div><b>Edição 413 fecha sexta</b><small>11 de 16 páginas prontas</small></div><span class="tag t-ok">Ver espelho</span></li>
+                <li><div><b>Auto Peças Javari</b><small>Cobrança enviada no WhatsApp</small></div><span class="tag t-er">Acompanhar</span></li>
+                <li><div><b>Newsletter de amanhã</b><small>Sai às 6h30 · 2.847 leitores</small></div><span class="tag t-ok">Pronta</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <p class="dica-rolar">← Arraste para o lado para ver o painel inteiro</p>
+
+    <ul class="legenda rev">
+      <li><span class="pin">7</span><div><b>O atraso aparece na hora</b><p>Hoje você descobre a inadimplência meses depois. Aqui ela está na primeira tela, todo dia.</p></div></li>
+      <li><span class="pin">8</span><div><b>Quem pagou e quem não pagou</b><p>Pix, boleto e cartão caem sozinhos na sua conta e a tela atualiza sem ninguém digitar nada.</p></div></li>
+      <li><span class="pin">9</span><div><b>A lista do dia</b><p>O painel te diz o que fazer, em vez de você ter que lembrar. Nada fica esquecido numa gaveta.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= TUTORIAL ================= -->
+<section style="background:var(--papel-alt)">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 4 · O DIA A DIA</i><hr></div>
+      <h2>Como você usa, na prática</h2>
+      <p class="apoio">Cinco situações que acontecem toda semana num jornal de bairro — e como elas ficam depois.</p>
+    </div>
+
+    <div class="passo rev">
+      <div class="passo-txt">
+        <div class="cont">Situação 1 de 5</div>
+        <h3>Aconteceu alguma coisa e precisa virar notícia</h3>
+        <p>O jornalista não começa da folha em branco. Ele escreve em duas linhas o que aconteceu, e o sistema devolve o texto montado para ele revisar e corrigir.</p>
+        <ul>
+          <li>O texto <strong>nunca é publicado sozinho</strong> — alguém da casa sempre lê e aprova antes</li>
+          <li>O sistema aponta o que ainda falta confirmar, em vez de inventar</li>
+          <li>Título, resumo e endereço da página saem prontos para o Google</li>
+          <li>Ao publicar, já vai para o site, para a newsletter e para o WhatsApp</li>
+        </ul>
+      </div>
+      <div class="demo">
+        <div class="demo-cab">Nova matéria</div>
+        <div class="demo-corpo">
+          <div class="ed-ia">
+            <div class="tit">Conte para o assistente o que houve</div>
+            <div class="txt">"Obra na Rua da Mooca entre a Javari e a Bresser, começa segunda, dura 90 dias, vira mão única, comerciantes reclamaram, subprefeitura marcou reunião quinta"</div>
+            <div class="ed-bt">Montar o texto</div>
+          </div>
+          <div class="ed-res">
+            <b>Obra na Rua da Mooca muda o trânsito por 90 dias</b>
+            O trecho entre a Rua Javari e a Rua Bresser passa a ter mão única a partir de segunda-feira, segundo a subprefeitura...
+            <div style="margin-top:9px;font-family:var(--dado);font-size:10px;color:#A63A22;letter-spacing:.04em">⚠ CONFIRMAR: data exata do início e nome do responsável pela obra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="passo rev">
+      <div class="passo-txt">
+        <div class="cont">Situação 2 de 5</div>
+        <h3>Um comerciante quer anunciar</h3>
+        <p>Ele entra na página "Anuncie aqui", escolhe o tamanho, manda a arte, paga no Pix e pronto. Não precisa te ligar, e você não precisa emitir boleto na mão.</p>
+        <ul>
+          <li>Ele vê <strong>onde o anúncio vai aparecer</strong> antes de comprar</li>
+          <li>Escolhe pagar uma vez só ou todo mês, direto no cartão</li>
+          <li>O anúncio só entra no ar depois que <strong>você aprova</strong></li>
+          <li>Ele acompanha sozinho quantas pessoas viram e clicaram</li>
+        </ul>
+      </div>
+      <div class="demo">
+        <div class="demo-cab">Anuncie aqui · Passo 3 de 5</div>
+        <div class="demo-corpo">
+          <div class="ed-campo"><span>Onde vai aparecer</span>Barra lateral da capa — 4 vagas, 1 livre</div>
+          <div class="ed-campo"><span>Por quanto tempo</span>Todo mês, com renovação automática</div>
+          <div class="ed-campo"><span>Investimento</span><b style="font-size:20px;color:#5A1B23">R$ 249,00 / mês</b></div>
+          <div style="display:flex;gap:7px;margin-top:11px;flex-wrap:wrap">
+            <span class="tag t-ok" style="padding:7px 11px;font-size:10px">Pix</span>
+            <span class="tag t-ok" style="padding:7px 11px;font-size:10px">Cartão</span>
+            <span class="tag t-ok" style="padding:7px 11px;font-size:10px">Boleto</span>
+          </div>
+          <div class="ed-bt" style="display:block;text-align:center;margin-top:12px">Contratar agora</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="passo rev">
+      <div class="passo-txt">
+        <div class="cont">Situação 3 de 5</div>
+        <h3>Alguém atrasou o pagamento</h3>
+        <p>Esta é a parte que mais dá dinheiro. Hoje, quem atrasa costuma continuar no ar e ninguém percebe. O sistema cobra sozinho, com jeito, e só tira do ar depois de avisar.</p>
+        <ul>
+          <li>As mensagens saem <strong>no seu nome</strong>, escritas com educação</li>
+          <li>O anúncio <strong>não sai do ar no primeiro dia</strong> — ninguém perde cliente por um esquecimento</li>
+          <li>No quinto dia, o sistema oferece parcelar ou trocar de plano antes de perder o anunciante</li>
+          <li>Quando ele paga, o anúncio volta na hora e ganha os dias parados de volta</li>
+        </ul>
+      </div>
+      <div class="demo">
+        <div class="demo-cab">Régua de cobrança automática</div>
+        <div class="demo-corpo" style="padding:13px 15px">
+          <ul class="rg">
+            <li class="a1"><span class="dia">3 dias antes</span><span><b>Lembrete amigável</b><span>"Oi, seu Márcio! Sua mensalidade vence quinta. Segue o Pix."</span></span></li>
+            <li class="a2"><span class="dia">no dia</span><span><b>Aviso de vencimento</b><span>Anúncio continua no ar normalmente.</span></span></li>
+            <li class="a2"><span class="dia">2 dias</span><span><b>Segunda via automática</b><span>Novo Pix e link de pagamento.</span></span></li>
+            <li class="a3"><span class="dia">5 dias</span><span><b>Sai do ar + proposta</b><span>"Consigo dividir em 2x ou passar pro plano menor. O que prefere?"</span></span></li>
+            <li class="a3"><span class="dia">8 dias</span><span><b>Vira tarefa sua</b><span>Aparece no painel para você ligar pessoalmente.</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="passo rev">
+      <div class="passo-txt">
+        <div class="cont">Situação 4 de 5</div>
+        <h3>Um leitor manda mensagem no WhatsApp</h3>
+        <p>O número do jornal responde sozinho, a qualquer hora, usando só o que está publicado no site. Se não souber, chama você em vez de inventar.</p>
+        <ul>
+          <li>Indica comércio do bairro — e <strong>quem anuncia aparece primeiro</strong>, identificado como anúncio</li>
+          <li>Responde sobre eventos, jogos e notícias já publicadas</li>
+          <li>Explica como anunciar e manda o link de contratação</li>
+          <li>Recebe denúncia e sugestão de pauta do morador</li>
+        </ul>
+      </div>
+      <div class="demo">
+        <div class="demo-cab">WhatsApp da Gazeta · 11 9xxxx-xxxx</div>
+        <div class="wa">
+          <div class="bl bl-e">Boa noite! Preciso de um cabeleireiro aqui na Mooca, sabe algum?<small>22:14</small></div>
+          <div class="bl bl-d">Boa noite! Aqui no nosso guia tem três pertinho:<br><br>💈 <b>Salão Dona Rita</b> — Rua Borges, 88 (anunciante da Gazeta)<br>💈 Espaço Bella — Rua da Mooca, 1.204<br>💈 Barbearia do Tonho — Rua Javari, 55<br><br>Quer que eu mande o WhatsApp de algum?<small>22:14 · assistente da Gazeta</small></div>
+          <div class="bl bl-e">Do primeiro, por favor. E tem jogo do Juventus esse fim de semana?<small>22:15</small></div>
+          <div class="bl bl-d">Mandei aqui o contato da Dona Rita 👆<br><br>⚽ Tem sim: <b>Juventus x Nacional</b>, sábado às 15h, na Rua Javari. <span class="lk">Ver na agenda</span><small>22:15</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="passo rev">
+      <div class="passo-txt">
+        <div class="cont">Situação 5 de 5</div>
+        <h3>Chegou o dia de fechar a edição impressa</h3>
+        <p>Numa tela só você vê a edição inteira: quais páginas estão prontas, quais estão vazias e qual anunciante ainda não mandou a arte. No fim, o sistema gera o PDF pronto para a gráfica.</p>
+        <ul>
+          <li>O sistema <strong>cobra a arte do anunciante</strong> sozinho, antes do fechamento</li>
+          <li>Avisa se o texto não vai caber no espaço, ainda dá tempo de cortar</li>
+          <li>Confere o arquivo antes de mandar para a gráfica — <strong>inclusive se os QR Codes funcionam</strong></li>
+          <li>Depois de impresso, o anunciante recebe o recorte da página dele com o número de leituras</li>
+        </ul>
+      </div>
+      <div class="demo">
+        <div class="demo-cab">Edição 413 · fecha sexta às 18h</div>
+        <div class="demo-corpo">
+          <div class="esp">
+            <div class="ok"><b>1</b>CAPA<br>pronta</div>
+            <div class="ok"><b>2</b>OPINIÃO<br>pronta</div>
+            <div class="an"><b>3</b>ANÚNCIO<br>falta arte</div>
+            <div class="ok"><b>4</b>BAIRRO<br>pronta</div>
+            <div class="ok"><b>5</b>BAIRRO<br>pronta</div>
+            <div class="vz"><b>6</b>SERVIÇO<br>vazia</div>
+            <div class="ok"><b>7</b>CULTURA<br>pronta</div>
+            <div class="ok"><b>8</b>ESPORTE<br>pronta</div>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;font-family:var(--dado);font-size:9.5px;letter-spacing:.06em">
+            <span class="tag t-ok">11 páginas prontas</span>
+            <span class="tag t-al">1 arte pendente</span>
+            <span class="tag t-er">4 páginas vazias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PACOTES ================= -->
+<section>
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 5 · OS PACOTES</i><hr></div>
+      <h2>Três tamanhos, mesma base</h2>
+      <p class="apoio">Os três rodam no mesmo sistema. A diferença é o que fica ligado. Dá para começar no menor e subir depois, sem refazer nada e sem pagar de novo o que já foi feito.</p>
+    </div>
+
+    <div class="pcts rev">
+
+      <article class="pct">
+        <div class="aba">Pacote 1</div>
+        <div class="topo">
+          <h3>Começo</h3>
+          <p class="pq">Para sair do improviso: o jornal na internet e o dinheiro entrando sozinho.</p>
+        </div>
+        <div class="vals">
+          <div class="lp"><span class="rot">Implantação</span><span class="vl">R$ 3.500<small>uma vez só</small></span></div>
+          <div class="lp"><span class="rot">Manutenção</span><span class="vl">R$ 290<small>por mês</small></span></div>
+        </div>
+        <ul class="itens">
+          <li>Site completo com notícias, editorias, busca e páginas de autor</li>
+          <li><strong>2 modelos de layout</strong>, com as cores tiradas da sua logo</li>
+          <li>Seu endereço de internet atual, sem perder o e-mail</li>
+          <li>Trazemos até <strong>300 matérias</strong> do site antigo</li>
+          <li>Preparado para aparecer no Google e no Google Notícias</li>
+          <li><strong>Guia da Mooca</strong> com até 60 estabelecimentos, com ficha simples e verificada</li>
+          <li><strong>Classificados de imóveis e veículos</strong>, com filtros e galeria de fotos</li>
+          <li>Anúncio de particular contratado e pago direto no site</li>
+          <li>Página <strong>“Anuncie aqui”</strong>, que vende sem passar por você</li>
+          <li><strong>Cobrança automática</strong> por Pix, boleto e cartão</li>
+          <li><strong>Régua de cobrança</strong> que avisa, cobra e recupera quem atrasa</li>
+          <li>Painel do anunciante com métricas e segunda via</li>
+          <li>Newsletter para até 2.000 leitores</li>
+          <li><strong>10 QR Codes</strong> para usar no jornal impresso</li>
+          <li>Site dentro da lei de proteção de dados</li>
+          <li>3 pessoas com acesso ao painel</li>
+          <li>Suporte por e-mail e WhatsApp, resposta em 1 dia útil</li>
+        </ul>
+      </article>
+
+      <article class="pct dest">
+        <div class="aba">Pacote 2</div>
+        <div class="topo">
+          <span class="rec">O mais indicado para a Gazeta</span>
+          <h3>Completo</h3>
+          <p class="pq">Para publicar mais com a mesma equipe, fechar o impresso pelo sistema e vender pelo WhatsApp.</p>
+        </div>
+        <div class="vals">
+          <div class="lp"><span class="rot">Implantação</span><span class="vl">R$ 5.000<small>uma vez só</small></span></div>
+          <div class="lp"><span class="rot">Manutenção</span><span class="vl">R$ 350<small>por mês</small></span></div>
+        </div>
+        <ul class="itens">
+          <li class="her">Tudo do Pacote 1, e mais:</li>
+          <li><strong>4 modelos de layout</strong> e montagem livre da capa</li>
+          <li>Trazemos <strong>todo</strong> o conteúdo antigo, sem limite</li>
+          <li><strong>Assistente de redação</strong>: o jornalista descreve o assunto e recebe o texto para revisar</li>
+          <li>Ajuda automática com título, resumo e redes sociais</li>
+          <li><strong>WhatsApp que responde sozinho</strong> leitores e anunciantes, 24 horas</li>
+          <li><strong>Guia da Mooca sem limite</strong> de fichas, com destaque e exclusividade de categoria</li>
+          <li><strong>Estoque automático</strong> de imobiliária e revenda: elas mandam a lista uma vez e o site atualiza sozinho</li>
+          <li>Planos mensais por volume para imobiliária e loja de carros</li>
+          <li>Botão “vendido”, que tira o anúncio do ar sozinho</li>
+          <li>Agenda de eventos, com envio pela própria comunidade</li>
+          <li>Página de esportes com tabela e artilharia</li>
+          <li><strong>Fechamento da edição impressa</strong>: espelho, controle de páginas e PDF pronto para a gráfica</li>
+          <li>Conferência do arquivo antes de ir para a gráfica</li>
+          <li>Recorte de comprovação para o anunciante, com número de leituras do QR</li>
+          <li>Edição digital folheável no site</li>
+          <li>Newsletter para até 10.000 leitores · <strong>100 QR Codes</strong></li>
+          <li>8 pessoas com acesso ao painel</li>
+          <li>Suporte por WhatsApp, resposta em 4 horas úteis</li>
+        </ul>
+      </article>
+
+      <article class="pct">
+        <div class="aba">Pacote 3</div>
+        <div class="topo">
+          <h3>Referência</h3>
+          <p class="pq">Para virar a principal fonte de informação da região e criar receita que não depende só de anúncio.</p>
+        </div>
+        <div class="vals">
+          <div class="lp"><span class="rot">Implantação</span><span class="vl">R$ 8.000<small>uma vez só</small></span></div>
+          <div class="lp"><span class="rot">Manutenção</span><span class="vl">R$ 490<small>por mês</small></span></div>
+        </div>
+        <ul class="itens">
+          <li class="her">Tudo do Pacote 2, e mais:</li>
+          <li><strong>Sem limite</strong> de matérias, páginas, edições e QR Codes</li>
+          <li>Layout desenhado sob medida para a Gazeta</li>
+          <li>Perfis de acesso personalizados por função</li>
+          <li>Arquivo aberto no programa do diagramador, se você tiver um</li>
+          <li><strong>Clube de vantagens</strong>: leitor cadastrado ganha desconto nos anunciantes do Guia</li>
+          <li>Página por rua: tudo que existe e já aconteceu em cada endereço da Mooca</li>
+          <li>Mensalidade de leitor, para quem quiser apoiar o jornal</li>
+          <li><strong>Fiscal do Bairro</strong>: morador reporta buraco e lixo pelo WhatsApp, vira mapa e cobrança pública</li>
+          <li>Memória da Mooca: acervo de fotos antigas enviadas por moradores</li>
+          <li>Prêmio “Melhores da Mooca”, com votação e cotas de patrocínio</li>
+          <li>Anúncio vendido junto com jornais de bairros vizinhos</li>
+          <li>Newsletter para até 30.000 leitores</li>
+          <li>Pessoas com acesso: sem limite</li>
+          <li>Suporte direto comigo e reunião mensal de resultado</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAGAMENTO ================= -->
+<section style="background:var(--papel-alt)">
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 6 · COMO PAGAR</i><hr></div>
+      <h2>Cinco formas de pagar a implantação</h2>
+      <p class="apoio">Escolha a que couber no seu caixa. Os valores abaixo usam o Pacote 2 como exemplo — a mesma regra vale para os outros dois.</p>
+    </div>
+
+    <div class="pgs rev">
+      <div class="pg melhor">
+        <div class="et">Forma 1 · mais econômica</div>
+        <h3>À vista, no Pix</h3>
+        <div class="nm">R$ 4.500<small>em vez de R$ 5.000</small></div>
+        <p>Desconto de 10% para pagamento único no Pix ou transferência, no ato da assinatura.</p>
+        <span class="selo-ec">Economia de R$ 500</span>
+      </div>
+
+      <div class="pg">
+        <div class="et">Forma 2 · a mais usada</div>
+        <h3>Em 3 vezes, sem juros</h3>
+        <div class="nm">3 × R$ 1.667<small>no Pix ou boleto</small></div>
+        <p>Uma parcela na assinatura, outra quando você aprovar o site pronto e a última no dia da estreia. Você só paga tudo depois de ver funcionando.</p>
+      </div>
+
+      <div class="pg">
+        <div class="et">Forma 3 · menor parcela</div>
+        <h3>Em 10 vezes no cartão</h3>
+        <div class="nm">10 × R$ 545<small>total R$ 5.450</small></div>
+        <p>Parcelado no cartão de crédito da empresa ou pessoal. O acréscimo é só a taxa da operadora, sem juros meus.</p>
+      </div>
+
+      <div class="pg flex">
+        <div class="et">Forma 4 · sem tirar do caixa</div>
+        <h3>Diluída na mensalidade</h3>
+        <div class="nm">R$ 1.500 + R$ 640/mês<small>por 12 meses, depois volta a R$ 350</small></div>
+        <p>Entrada pequena e o resto embutido na mensalidade do primeiro ano. Serve para quem prefere não descapitalizar agora.</p>
+      </div>
+
+      <div class="pg flex">
+        <div class="et">Forma 5 · pagando com o jornal</div>
+        <h3>Metade em espaço publicitário</h3>
+        <div class="nm">R$ 2.500 + permuta<small>anúncio no jornal e no site</small></div>
+        <p>Metade em dinheiro e metade em espaço de anúncio da Gazeta, a preço de tabela, para eu divulgar meu trabalho para outros jornais. Sai caixa de menos e vale para os três pacotes.</p>
+      </div>
+    </div>
+
+    <div class="duas rev" style="margin-top:clamp(38px,6vw,58px)">
+      <div class="bl2">
+        <h3>A mensalidade cobre</h3>
+        <ul>
+          <li>Hospedagem, endereço, certificado de segurança e cópia de segurança diária</li>
+          <li>O site no ar 24 horas, com aviso antes de você perceber qualquer problema</li>
+          <li>Conserto de qualquer falha do sistema, sem cobrar nada a mais</li>
+          <li>Todas as melhorias novas, conforme forem saindo</li>
+          <li>Mudanças de configuração: preço de anúncio, editoria, texto da cobrança</li>
+          <li>Suporte no canal e no prazo do seu pacote</li>
+          <li>Relatório todo mês com audiência, faturamento e quem está devendo</li>
+          <li>Envio das newsletters</li>
+        </ul>
+        <p class="nt">Um boleto só por mês. Você não contrata mais nada por fora.</p>
+      </div>
+      <div class="bl2 fora">
+        <h3>A mensalidade não cobre</h3>
+        <ul>
+          <li>A taxa que o banco cobra por cada Pix, boleto ou cartão recebido — descontada direto na sua conta</li>
+          <li>Impressão na gráfica e distribuição dos exemplares</li>
+          <li>Criação de arte de anúncio — <strong>R$ 120 por peça</strong>, se quiser encomendar</li>
+          <li>Escrever as matérias, tirar as fotos e apurar as notícias</li>
+          <li>Digitalizar edições impressas antigas — orçamento à parte</li>
+          <li>Programar alguma coisa exclusiva, que só a Gazeta teria</li>
+        </ul>
+        <p class="nt">Nada disso vira surpresa: qualquer custo extra é combinado antes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GARANTIAS ================= -->
+<section>
+  <div class="wrap">
+    <div class="cab rev">
+      <div class="marca"><i>PARTE 7 · SEGURANÇA</i><hr></div>
+      <h2>O que você não corre risco de perder</h2>
+    </div>
+    <div class="gars rev">
+      <div class="gar">
+        <h3>O site antigo fica no ar</h3>
+        <p>Ele só é desligado 30 dias depois que o novo estiver funcionando e aprovado por você. Se algo der errado, voltamos.</p>
+      </div>
+      <div class="gar">
+        <h3>Nada entra no ar sem você ver</h3>
+        <p>Layout, conteúdo trazido e troca de endereço só acontecem depois da sua aprovação. Você vê tudo pronto num link antes.</p>
+      </div>
+      <div class="gar">
+        <h3>O conteúdo é seu</h3>
+        <p>A qualquer momento você baixa tudo — matérias, fotos, lista de leitores, anunciantes e histórico — e leva para onde quiser.</p>
+      </div>
+      <div class="gar">
+        <h3>Você não fica preso</h3>
+        <p>Contrato de 12 meses e depois mês a mês. Para sair, basta avisar com 60 dias. Sem multa e sem taxa de desligamento.</p>
+      </div>
+      <div class="gar">
+        <h3>A mensalidade começa depois</h3>
+        <p>O primeiro boleto mensal só vence 30 dias após a estreia. Você não paga manutenção de site que ainda não está no ar.</p>
+      </div>
+      <div class="gar">
+        <h3>Preço travado por 2 anos</h3>
+        <p>A mensalidade não sobe nos primeiros 24 meses, mesmo que o preço para novos clientes aumente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="fim">
+  <div class="wrap">
+    <h2>Se fizer sentido, dá para começar semana que vem</h2>
+    <p>A primeira conversa não custa nada e não obriga a nada.</p>
+    <ol class="passos">
+      <li>Você me diz qual pacote e qual forma de pagamento fazem sentido — ou marcamos um café para decidir juntos</li>
+      <li>Eu mando o contrato e a lista do que preciso: a logo, o acesso do site atual e a relação dos anunciantes</li>
+      <li>Marcamos a primeira reunião e começa a contagem das semanas</li>
+      <li>Na estreia, sua equipe recebe o treinamento gravado e o meu telefone direto</li>
+    </ol>
+    <div class="assina">
+      <div class="q">Victor Seliger<small>Desenvolvimento e implantação</small></div>
+      <div class="v">Proposta nº 001 · agosto de 2026<br>Valores válidos por 30 dias</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var a=document.querySelectorAll('.rev');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    a.forEach(function(e){e.classList.add('on')});return;
+  }
+  var o=new IntersectionObserver(function(en){
+    en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  a.forEach(function(e){o.observe(e)});
+})();
+</script>
+</body>
+</html>
